@@ -1,6 +1,6 @@
 import Image from "next/image";
 import prestige from "/public/prestige.webp";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "~/components/SectionTitle";
 
 const productStyle = "flex items-center";
 const categoryNameStyle = "text-2xl rotate-90 font-extrabold";

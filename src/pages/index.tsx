@@ -1,13 +1,13 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import AccessoriesSwiper from "~/components/AccessoriesSwiper";
+import AccessoriesSwiper from "./AccessoriesSwiper";
 import Cart from "~/components/Cart";
-import Categories from "~/components/Categories";
-import Discover from "~/components/Discover";
-import LandingSection from "~/components/LandingSection";
-import LaptopsSwiper from "~/components/LaptopsSwiper";
-import Marketing from "~/components/Marketing";
-import SecondSection from "~/components/SecondSection";
+import Categories from "./Categories";
+import Discover from "./Discover";
+import LandingSection from "./LandingSection";
+import LaptopsSwiper from "./LaptopsSwiper";
+import Marketing from "./Marketing";
+import SecondSection from "./SecondSection";
 // import Link from "next/link";
 // import { signIn, signOut, useSession } from "next-auth/react";
 

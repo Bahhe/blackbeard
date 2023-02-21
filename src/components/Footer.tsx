@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 
 const sections = [
@@ -19,15 +20,21 @@ const sections = [
   },
 ];
 
+export const adminRoutes = /\/dashboard*/;
+
 export default function Footer() {
+  const { asPath } = useRouter();
+  if (adminRoutes.test(asPath)) {
+    return;
+  }
   return (
     <footer>
       <h6 className="text-center text-4xl font-extrabold">BlackBeardt</h6>
-      <div className="flex justify-center w-5/6 mx-auto py-20 gap-16">
+      <div className="mx-auto flex w-5/6 justify-center gap-16 py-20">
         {sections.map((section, index) => (
           <section key={index}>
             <h6 className="text-xl font-bold">{section.title}</h6>
-            <ul className="font-thin pl-2">
+            <ul className="pl-2 font-thin">
               {section.links.map((link, index) => (
                 <li key={index}>{link}</li>
               ))}
@@ -44,21 +51,21 @@ export default function Footer() {
           <div className="my-5">
             <input
               type="email"
-              className="border p-3 rounded-lg shadow-xl mx-2"
+              className="mx-2 rounded-lg border p-3 shadow-xl"
               placeholder="example@gmail.com"
             />
-            <button className="bg-blue-700 rounded-lg shadow-xl p-3 text-white cursor-pointer">
+            <button className="cursor-pointer rounded-lg bg-blue-700 p-3 text-white shadow-xl">
               subscribe
             </button>
           </div>
           <h6 className="text-2xl font-bold capitalize">connect with us</h6>
-          <div className="flex items-center text-4xl gap-3 mt-3 text-blue-700">
+          <div className="mt-3 flex items-center gap-3 text-4xl text-blue-700">
             <FaFacebookSquare />
             <FaInstagramSquare />
           </div>
         </section>
       </div>
-      <footer className="text-sm font-thin text-gray-700 py-10 text-center">
+      <footer className="py-10 text-center text-sm font-thin text-gray-700">
         BlackBeardt © 2023 Store. All Rights Reserved. Designed by
         BahaEddine.Com
       </footer>

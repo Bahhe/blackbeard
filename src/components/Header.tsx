@@ -2,11 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "/public/logo.png";
 import { BsSearch } from "react-icons/bs";
+import { useRouter } from "next/router";
+import { adminRoutes } from "./Footer";
 
 const linkStyle =
   "border-b-2 border-white hover:border-black ease-in-out duration-1000 outline-none";
 
 const Header = () => {
+  const { asPath } = useRouter();
+  if (adminRoutes.test(asPath)) {
+    return;
+  }
   return (
     <header className="flex w-full items-center justify-evenly">
       <nav className="flex flex-1 items-center justify-evenly font-bold capitalize">
