@@ -69,13 +69,14 @@ model Computer {
     id          String   @id @default(cuid())
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
-    // category    String[]
-    // section     String[]
+    category    String
+    brand       String
+    section     String
     title       String
     image       String
     description String
     price       String
-    stock       Boolean  @default(true)
+    stock       String
     cpu         String
     ram         String
     storage     String
