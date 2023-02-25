@@ -46,7 +46,7 @@ export default function AdminHeader() {
             </Link>
           </li>
           <li className="text-7xl">
-            <Link href="#">
+            <Link href="/dashboard/products/add">
               <MdAddBox />
             </Link>
           </li>

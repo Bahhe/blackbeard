@@ -8,10 +8,12 @@ import { storage } from "~/utils/firebase";
 import { BsUpload } from "react-icons/bs";
 import type { Product } from "types";
 import { api } from "~/utils/api";
+import { useRouter } from "next/router";
 
 const inputStyle = "rounded border p-2 shadow my-2 bg-white";
 
 export default function AddProductForm() {
+  const router = useRouter();
   const [url, setUrl] = useState<string>("");
   const utils = api.useContext();
   const { mutate } = api.products.createProduct.useMutation({
@@ -45,8 +47,9 @@ export default function AddProductForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<Product>();
-  const onSubmit: SubmitHandler<Product> = (data) => {
+  const onSubmit: SubmitHandler<Product> = async (data) => {
     mutate({ ...data, image: url });
+    await router.push("/dashboard/products");
   };
   console.log(errors);
 
