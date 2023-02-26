@@ -37,7 +37,12 @@ export default function AdminHeader() {
           </li>
           <li>
             <Link href="/dashboard/orders">
-              <CgNotes />
+              <div className="relative">
+                <CgNotes />
+                <div className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-red-500 text-center text-sm text-white">
+                  0
+                </div>
+              </div>
             </Link>
           </li>
           <li>

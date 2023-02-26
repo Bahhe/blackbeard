@@ -8,10 +8,10 @@ import { adminRoutes } from "./Footer";
 const linkStyle =
   "border-b-2 border-white hover:border-black ease-in-out duration-1000 outline-none";
 
-const Header = () => {
+export default function Header() {
   const { asPath } = useRouter();
   if (adminRoutes.test(asPath)) {
-    return;
+    return <></>;
   }
   return (
     <header className="flex w-full items-center justify-evenly">
@@ -49,5 +49,4 @@ const Header = () => {
       </form>
     </header>
   );
-};
-export default Header;
+}

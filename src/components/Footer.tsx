@@ -25,7 +25,7 @@ export const adminRoutes = /\/dashboard*/;
 export default function Footer() {
   const { asPath } = useRouter();
   if (adminRoutes.test(asPath)) {
-    return;
+    return <></>;
   }
   return (
     <footer>

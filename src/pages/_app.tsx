@@ -8,6 +8,8 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
+import { store } from "~/redux/store";
+import { Provider } from "react-redux";
 
 const merienda = Merienda({ subsets: ["latin"] });
 
@@ -17,11 +19,13 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <main className={merienda.className}>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-      </main>
+      <Provider store={store}>
+        <main className={merienda.className}>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </main>
+      </Provider>
     </SessionProvider>
   );
 };

@@ -1,11 +1,11 @@
-import { MdInventory } from "react-icons/md";
+import { CgNotes } from "react-icons/cg";
 
 export default function OrdersPageContent() {
   return (
     <section className="flex justify-center">
       <div className="flex flex-col justify-center rounded-lg p-10 shadow-lg">
         <div className="flex max-h-96 items-center gap-5">
-          <MdInventory className="text-7xl text-blue-700" />
+          <CgNotes className="text-7xl text-blue-700" />
           <h2 className="font-semibold capitalize">baha eddine</h2>
           <p>marchelldteach@gmail.com</p>
           <div className="flex items-center gap-5">

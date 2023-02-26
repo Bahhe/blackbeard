@@ -2,6 +2,9 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const productsRouter = createTRPCRouter({
+  getTotal: publicProcedure.query(({ ctx }) => {
+    return ctx.prisma.computer.count();
+  }),
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.computer.findMany();
   }),
