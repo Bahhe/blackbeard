@@ -1,13 +1,16 @@
 import Image from "next/image";
 import { BsLaptop } from "react-icons/bs";
 import type { Product } from "types";
+import { useDispatch } from "react-redux";
+import { addToCart } from "~/redux/cartSlice";
 
 type ProductProps = {
   product: Product;
 };
 
 export default function Product({ product }: ProductProps) {
-  const { title, description, image, price } = product;
+  const { id, title, description, image, price } = product;
+  const dispatch = useDispatch();
   return (
     <section className="flex-1 p-10">
       <div className="mx-auto w-4/6 rounded-2xl border bg-gray-200 shadow-lg">
@@ -35,7 +38,12 @@ export default function Product({ product }: ProductProps) {
             <button className="w-32 rounded bg-blue-700 py-2 font-extrabold text-white shadow-lg duration-500 hover:bg-white hover:text-black">
               buy
             </button>
-            <button className="w-32 rounded py-2 font-extrabold shadow-lg duration-500 hover:bg-blue-700 hover:text-white">
+            <button
+              onClick={() => {
+                dispatch(addToCart({ id, title, image, price, quantity: 0 }));
+              }}
+              className="w-32 rounded py-2 font-extrabold shadow-lg duration-500 hover:bg-blue-700 hover:text-white"
+            >
               add to cart
             </button>
           </div>

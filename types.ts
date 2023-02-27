@@ -5,3 +5,15 @@ type RouterOutputs = inferRouterOutputs<AppRouter>;
 type allProductsOutputs = RouterOutputs["products"]["getAll"];
 
 export type Product = allProductsOutputs[number];
+
+export type CartProduct = {
+  id: string;
+  title: string;
+  image: string;
+  price: string;
+  quantity: number;
+};
+
+export type RootState = {
+  cart: CartProduct[];
+};

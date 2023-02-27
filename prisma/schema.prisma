@@ -83,3 +83,14 @@ model Computer {
     display     String
     gpu         String
 }
+
+model Order {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    email     String
+    name      String
+    address   String
+    city      String
+    number    String
+}
