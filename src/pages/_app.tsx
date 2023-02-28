@@ -2,13 +2,14 @@ import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { Merienda } from "@next/font/google";
+import { PersistGate } from "redux-persist/integration/react";
 
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
-import { store } from "~/redux/store";
+import { persistor, store } from "~/redux/store";
 import { Provider } from "react-redux";
 
 const merienda = Merienda({ subsets: ["latin"] });
@@ -20,11 +21,13 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Provider store={store}>
-        <main className={merienda.className}>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-        </main>
+        <PersistGate loading={null} persistor={persistor}>
+          <main className={merienda.className}>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </main>
+        </PersistGate>
       </Provider>
     </SessionProvider>
   );

@@ -16,7 +16,6 @@ const Cart = () => {
     });
     return total;
   };
-  console.log(getTotalQuantity());
   return (
     <div className="fixed left-1/2 bottom-10 z-10 flex -translate-x-1/2 items-center gap-4 rounded-lg border bg-white py-2 px-4 text-4xl shadow-lg duration-500 hover:-translate-y-2">
       <IoMdPerson className={iconsStyle} />

@@ -1,14 +1,35 @@
+import { useRouter } from "next/router";
 import React from "react";
+import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import type { Order, RootState } from "types";
+import { resetCart } from "~/redux/cartSlice";
+import { api } from "~/utils/api";
 
 const inputStyle = "border py-2 px-5 rounded-lg";
 export default function Checkout() {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const utils = api.useContext();
+  const { mutate: createOrder } = api.orders.createOrder.useMutation({
+    async onSuccess() {
+      await utils.orders.invalidate();
+    },
+  });
+  const cart = useSelector((state: RootState) => state.cart);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  } = useForm<Order>();
+  const onSubmit: SubmitHandler<Order> = async (data) => {
+    createOrder({ ...data, orders: cart });
+    dispatch(resetCart());
+    alert("your order has been placed thanks for purchasing from us");
+    await router.push("/");
+  };
   console.log(errors);
 
   return (
@@ -20,14 +41,14 @@ export default function Checkout() {
         >
           <input
             type="email"
-            placeholder="Email"
-            {...register("Email", { required: true })}
+            placeholder="email"
+            {...register("email", { required: true })}
             className={inputStyle}
           />
           <input
             type="text"
-            placeholder="Name"
-            {...register("Name", {
+            placeholder="name"
+            {...register("name", {
               required: true,
               max: 15,
               min: 5,
@@ -37,8 +58,8 @@ export default function Checkout() {
           />
           <input
             type="text"
-            placeholder="Address"
-            {...register("Address", {
+            placeholder="address"
+            {...register("address", {
               required: true,
               max: 100,
               min: 10,
@@ -48,8 +69,8 @@ export default function Checkout() {
           />
           <input
             type="text"
-            placeholder="City"
-            {...register("City", {
+            placeholder="city"
+            {...register("city", {
               required: true,
               max: 20,
               min: 4,
@@ -59,12 +80,12 @@ export default function Checkout() {
           />
           <input
             type="tel"
-            placeholder="Phone Number"
-            {...register("Phone Number", { required: true })}
+            placeholder="number"
+            {...register("number", { required: true })}
             className={inputStyle}
           />
           <select
-            {...register("Delivery", { required: true })}
+            {...register("delivery", { required: true })}
             className={inputStyle}
           >
             <option value="Yalidine">Yalidine</option>
