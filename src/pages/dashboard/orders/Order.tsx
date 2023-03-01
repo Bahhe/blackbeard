@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CgNotes } from "react-icons/cg";
 import type { Order } from "types";
 import { api } from "~/utils/api";
@@ -18,9 +19,12 @@ export default function Order({ order: { id, name, email } }: OrderProps) {
       <h2 className="w-32 truncate font-semibold capitalize">{name}</h2>
       <p className="w-56 truncate ">{email}</p>
       <div className="flex items-center gap-5">
-        <button className="rounded-lg bg-green-500 px-4 py-2 text-white shadow-lg hover:scale-105">
+        <Link
+          href={`/dashboard/orders/${id}`}
+          className="rounded-lg bg-green-500 px-4 py-2 text-white shadow-lg hover:scale-105"
+        >
           check
-        </button>
+        </Link>
         <button
           onClick={() => deleteOrder(id)}
           className="rounded-lg bg-red-500 px-4 py-2 text-white shadow-lg hover:scale-105"

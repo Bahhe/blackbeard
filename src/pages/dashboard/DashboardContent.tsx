@@ -12,6 +12,7 @@ export default function DashboardContent() {
   const quantityStyle = "text-lg text-red-500";
 
   const { data: totalProducts } = api.products.getTotal.useQuery();
+  const { data: totalOrders } = api.orders.getTotal.useQuery();
 
   return (
     <section className="flex justify-center">
@@ -31,13 +32,13 @@ export default function DashboardContent() {
               <p className={quantityStyle}>30</p>
             </div>
           </div>
-          <div className={boxStyle}>
+          <Link href="dashboard/orders" className={boxStyle}>
             <CgNotes className={iconStyle} />
             <div>
               <h1 className={titleStyle}>orders</h1>
-              <p className={quantityStyle}>240</p>
+              <p className={quantityStyle}>{totalOrders || "0"}</p>
             </div>
-          </div>
+          </Link>
         </div>
         <div className="my-20 w-full rounded-lg shadow-lg">
           <ChartSection />
