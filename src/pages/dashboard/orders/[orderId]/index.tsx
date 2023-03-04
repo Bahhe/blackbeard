@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import AdminHeader from "~/components/AdminHeader";
 import { api } from "~/utils/api";
 import Order from "./Order";
+import type { NextPageContext } from "next";
+import { getSession } from "next-auth/react";
 
 export default function OrderPage() {
   const router = useRouter();
@@ -18,4 +20,20 @@ export default function OrderPage() {
       </section>
     </>
   );
+}
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (!session || session.user.email !== process.env.ADMIN_EMAIL) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }

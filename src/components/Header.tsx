@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <header className="flex w-full items-center justify-evenly">
       <nav className="flex flex-1 items-center justify-evenly font-bold capitalize">
-        <Link href="about" className={linkStyle}>
+        <Link href="/about" className={linkStyle}>
           about
         </Link>
         <Link href="/" className={linkStyle}>

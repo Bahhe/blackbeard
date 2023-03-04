@@ -13,6 +13,7 @@ export default function DashboardContent() {
 
   const { data: totalProducts } = api.products.getTotal.useQuery();
   const { data: totalOrders } = api.orders.getTotal.useQuery();
+  const { data: totalUsers } = api.users.getTotal.useQuery();
 
   return (
     <section className="flex justify-center">
@@ -25,13 +26,13 @@ export default function DashboardContent() {
               <p className={quantityStyle}>{totalProducts || "0"}</p>
             </div>
           </Link>
-          <div className={boxStyle}>
+          <Link href="/dashboard/users" className={boxStyle}>
             <BsFillPersonFill className={iconStyle} />
             <div>
               <h1 className={titleStyle}>users</h1>
-              <p className={quantityStyle}>30</p>
+              <p className={quantityStyle}>{totalUsers || 0}</p>
             </div>
-          </div>
+          </Link>
           <Link href="dashboard/orders" className={boxStyle}>
             <CgNotes className={iconStyle} />
             <div>

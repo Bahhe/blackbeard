@@ -4,8 +4,11 @@ import { MdAddBox, MdInventory, MdPeople } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { CgNotes, CgWebsite } from "react-icons/cg";
 import Link from "next/link";
+import { api } from "~/utils/api";
+import { signOut } from "next-auth/react";
 
 export default function AdminHeader() {
+  const { data: ordersCount } = api.orders.getTotal.useQuery();
   return (
     <main className="flex justify-center">
       <nav className="my-10 flex items-center justify-center rounded-xl bg-blue-700 py-2 px-4 text-white">
@@ -15,10 +18,8 @@ export default function AdminHeader() {
               <BsFillPersonFill />
             </Link>
           </li>
-          <li>
-            <Link href="#">
-              <AiOutlineLogout />
-            </Link>
+          <li onClick={() => void signOut()} className="cursor-pointer">
+            <AiOutlineLogout />
           </li>
           <li>
             <Link href="/dashboard">
@@ -40,7 +41,7 @@ export default function AdminHeader() {
               <div className="relative">
                 <CgNotes />
                 <div className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-red-500 text-center text-sm text-white">
-                  0
+                  {ordersCount || 0}
                 </div>
               </div>
             </Link>
