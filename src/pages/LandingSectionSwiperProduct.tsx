@@ -17,8 +17,14 @@ export default function LandingSectionSwiperProduct({ product }: ProductProps) {
         </div>
       </div>
       <div className="flex-1">
-        <div className="w-5/6">
-          <Image src={image} width={898} height={585} alt="laptop" />
+        <div className="flex h-96 w-5/6 items-center justify-center">
+          <Image
+            src={image}
+            width={898}
+            height={585}
+            alt="laptop"
+            className="w-5/6"
+          />
         </div>
       </div>
     </div>

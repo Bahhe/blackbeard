@@ -10,7 +10,7 @@ export default function LaptopsSwiperProduct({
   product: { image, title, price },
 }: ProductProps) {
   return (
-    <div>
+    <div className="mx-5">
       <div className="flex aspect-square flex-col items-center justify-center rounded-3xl border">
         <Image src={image} width={898} height={595} alt="laptop" />
       </div>

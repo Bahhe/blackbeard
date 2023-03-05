@@ -12,29 +12,29 @@ export default function Product({ product }: ProductProps) {
   const { id, title, description, image, price } = product;
   const dispatch = useDispatch();
   return (
-    <section className="flex-1 p-10">
-      <div className="mx-auto w-4/6 rounded-2xl border bg-gray-200 shadow-lg">
-        <div className="flex items-center justify-center">
-          <div className="relative h-5/6 w-5/6 p-5">
-            <Image
-              src={image}
-              width={898}
-              height={585}
-              alt="laptop"
-              className="cursor-pointer"
-            />
-          </div>
+    <section className="flex-1">
+      <div className="mx-auto my-5 h-[500px] w-[400px] rounded-2xl border bg-gray-200 shadow-lg">
+        <div className="flex h-1/2 items-center justify-center">
+          <Image
+            src={image}
+            width={598}
+            height={285}
+            alt="laptop"
+            className="w-4/6 cursor-pointer"
+          />
         </div>
-        <div className="rounded-2xl border bg-white">
-          <div className="flex items-center justify-between p-5">
-            <BsLaptop className="text-3xl" />
-            <h3 className="text-2xl font-bold capitalize">{title}</h3>
-            <p className="text-lg uppercase">{price} da</p>
+        <div className="relative flex h-1/2 flex-col justify-between rounded-2xl border bg-white">
+          <div className="flex items-center p-5">
+            <BsLaptop className="absolute top-5 left-5 flex text-3xl" />
+            <h3 className="ml-16 text-lg font-bold capitalize">{title}</h3>
+            <p className="absolute top-5 right-5 text-end text-lg">
+              {price} da
+            </p>
           </div>
-          <div>
+          <div className="my-2 h-20">
             <p className="mx-auto w-4/6">{description}</p>
           </div>
-          <div className="flex items-center justify-center gap-3 py-5">
+          <div className="flex justify-center gap-3 py-5">
             <button className="w-32 rounded bg-blue-700 py-2 font-extrabold text-white shadow-lg duration-500 hover:bg-white hover:text-black">
               buy
             </button>

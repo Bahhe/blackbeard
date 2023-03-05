@@ -1,13 +1,13 @@
 import { BsLaptop } from "react-icons/bs";
-import ProductSwiper from "./ProductSwiper";
+import LaptopsProducts from "./laptopsProducts";
 
 const LaptopsSwiper = () => {
   return (
     <section className="pt-20">
-      <div className="w-5/6 mx-auto">
-        <div className="flex items-center">
-          <div className="my-5 border flex items-center rounded-full relative shadow-xl">
-            <div className="border h-full aspect-square font-bold rounded-full bg-blue-700 text-white absolute top-1/2 left-0 -translate-y-1/2 flex items-center justify-center">
+      <div className="mx-auto w-5/6">
+        <div className="flex items-center justify-start">
+          <div className="relative my-5 flex items-center rounded-full border shadow-xl">
+            <div className="absolute top-1/2 left-0 flex aspect-square h-full -translate-y-1/2 items-center justify-center rounded-full border bg-blue-700 font-bold text-white">
               <BsLaptop className="text-2xl" />
             </div>
             <h5 className="py-3 px-20 text-2xl font-bold capitalize">
@@ -15,7 +15,7 @@ const LaptopsSwiper = () => {
             </h5>
           </div>
         </div>
-        <ProductSwiper />
+        <LaptopsProducts />
       </div>
     </section>
   );

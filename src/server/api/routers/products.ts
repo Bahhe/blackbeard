@@ -2,6 +2,35 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const productsRouter = createTRPCRouter({
+  paginatedProducts: publicProcedure
+    .input(
+      z.object({
+        limit: z.number().min(1).max(100).default(10),
+        cursor: z.string().nullish(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { cursor, limit } = input;
+      const products = await ctx.prisma.computer.findMany({
+        take: limit + 1,
+        orderBy: [
+          {
+            createdAt: "desc",
+          },
+        ],
+        cursor: cursor ? { id: cursor } : undefined,
+      });
+      let nextCursor: typeof cursor | undefined = undefined;
+
+      if (products.length > limit) {
+        const nextItem = products.pop() as (typeof products)[number];
+        nextCursor = nextItem.id;
+      }
+      return {
+        products,
+        nextCursor,
+      };
+    }),
   getTotal: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.computer.count();
   }),

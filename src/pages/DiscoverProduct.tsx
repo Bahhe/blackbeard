@@ -8,13 +8,13 @@ type ProductProps = {
 
 export default function DiscoverProduct({ product: { image } }: ProductProps) {
   return (
-    <div className="relative rounded-2xl border shadow-xl">
+    <div className="relative flex cursor-pointer items-center justify-center rounded-2xl border shadow-xl duration-200 hover:scale-105">
       <Image
         src={image}
-        width={898}
-        height={595}
+        width={298}
+        height={195}
         alt="product"
-        className="p-10"
+        className="w-5/6 p-5"
       />
       <BsLaptop className="absolute top-5 left-5 text-2xl" />
       <span className="absolute top-5 right-5 rounded bg-red-500 py-1 px-4 font-bold text-white">

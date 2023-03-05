@@ -6,10 +6,10 @@ const Discover = () => {
   const { data: product } = api.products.getAll.useQuery();
 
   return (
-    <section className="">
-      <div className="mx-auto w-4/6">
-        <SectionTitle name="discover" />
-        <div className="flex items-center gap-10">
+    <section className="marquee h-[500px]">
+      <SectionTitle name="discover" />
+      <div className="track">
+        <div className="content flex min-w-max gap-10">
           {!product
             ? "loading products..."
             : product.map((product) => (

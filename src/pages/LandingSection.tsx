@@ -1,5 +1,3 @@
-import { FaArrowCircleLeft } from "react-icons/fa";
-import { FaArrowCircleRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -9,12 +7,13 @@ import { Navigation } from "swiper";
 
 import LandingSectionSwiperProduct from "./LandingSectionSwiperProduct";
 import { api } from "~/utils/api";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 const LandingSection = () => {
   const { data: products } = api.products.getAll.useQuery();
   return (
     <section className="mt-32">
-      <div className="relative mx-auto flex w-4/6 items-center py-28">
+      <div className="group relative mx-auto flex w-4/6 items-center py-28">
         <Swiper
           navigation={{
             nextEl: ".image-swiper-button-next",
@@ -32,8 +31,8 @@ const LandingSection = () => {
                 </SwiperSlide>
               ))}
         </Swiper>
-        <FaArrowCircleLeft className="image-swiper-button-prev absolute left-0 z-10 -translate-x-1/2 cursor-pointer text-5xl text-blue-700 hover:scale-105" />
-        <FaArrowCircleRight className="image-swiper-button-next absolute right-0 z-10 translate-x-1/2 cursor-pointer text-5xl text-blue-700 hover:scale-105" />
+        <MdArrowBackIos className="image-swiper-button-prev absolute left-0 z-10 -translate-x-1/2 cursor-pointer text-5xl opacity-0  duration-700 hover:scale-105 group-hover:opacity-100" />
+        <MdArrowForwardIos className="image-swiper-button-next absolute right-0 z-10 translate-x-1/2 cursor-pointer text-5xl opacity-0 duration-700 hover:scale-105 group-hover:opacity-100" />
       </div>
     </section>
   );

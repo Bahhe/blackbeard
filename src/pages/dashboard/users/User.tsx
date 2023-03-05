@@ -38,16 +38,16 @@ export default function User({
           alt="user image"
         />
       </div>
-      <h2 className="font-semibold capitalize">{name}</h2>
-      <p>{email}</p>
-      <div>
+      <h2 className="w-32 truncate font-semibold capitalize">{name}</h2>
+      <p className="w-56 truncate">{email}</p>
+      <div className="w-20">
         {admin ? (
           <span className="text-red-500">admin</span>
         ) : (
           <span className="text-green-500">client</span>
         )}
       </div>
-      <div>
+      <div className="w-16">
         <MySwitch checked={checked} onChange={handleChange} />
       </div>
     </div>

@@ -3,13 +3,13 @@ import "swiper/css/navigation";
 
 import { Navigation } from "swiper";
 import Image from "next/image";
-import cover from "/public/swiperCoverOne.png";
-import { FaArrowAltCircleRight, FaArrowCircleLeft } from "react-icons/fa";
+import cover from "/public/laptopsCover.png";
 import LaptopsSwiperProduct from "./LaptopsSwiperProduct";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { api } from "~/utils/api";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
-const ProductSwiper = () => {
+const LaptopsProducts = () => {
   const { data: products } = api.products.getAll.useQuery();
   return (
     <section>
@@ -17,15 +17,15 @@ const ProductSwiper = () => {
         <div className="mt-10 ml-10 mb-10 self-start overflow-hidden rounded-3xl border shadow-xl">
           <Image
             src={cover}
-            width={817}
-            height={1024}
+            width={317}
+            height={424}
             alt="cover"
             className="object-cover"
           />
         </div>
-        <div className="relative flex w-4/6 items-center gap-4 p-10">
-          <FaArrowCircleLeft className="image-laptops-swiper-button-prev absolute top-1/2 left-0 -translate-y-1/2 text-4xl" />
-          <FaArrowAltCircleRight className="image-laptops-swiper-button-next absolute top-1/2 right-0 -translate-y-1/2 text-4xl" />
+        <div className="relative mx-auto flex w-4/6 items-center gap-4 p-10">
+          <MdArrowBackIos className="image-laptops-swiper-button-prev absolute top-1/2 -left-5 -translate-y-1/2 cursor-pointer text-4xl" />
+          <MdArrowForwardIos className="image-laptops-swiper-button-next absolute top-1/2 -right-5 -translate-y-1/2 cursor-pointer text-4xl" />
           <Swiper
             slidesPerView={3}
             navigation={{
@@ -50,4 +50,4 @@ const ProductSwiper = () => {
   );
 };
 
-export default ProductSwiper;
+export default LaptopsProducts;

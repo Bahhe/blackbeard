@@ -1,5 +1,6 @@
 import Image from "next/image";
 import prestige from "/public/prestige.webp";
+import headphone from "/public/headphone.png";
 import SectionTitle from "~/components/SectionTitle";
 
 const productStyle = "flex items-center";
@@ -28,7 +29,7 @@ const Categories = () => {
             <h4 className={categoryNameStyle}>accessories</h4>
             <div>
               <Image
-                src={prestige}
+                src={headphone}
                 width={898}
                 height={585}
                 alt="categories"
