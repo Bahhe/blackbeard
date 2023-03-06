@@ -20,7 +20,7 @@ const LaptopsProducts = () => {
             width={317}
             height={424}
             alt="cover"
-            className="object-cover"
+            className="h-auto w-auto object-cover"
           />
         </div>
         <div className="relative mx-auto flex w-4/6 items-center gap-4 p-10">

@@ -9,6 +9,7 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
+import Cart from "~/components/Cart";
 import { persistor, store } from "~/redux/store";
 import { Provider } from "react-redux";
 
@@ -24,6 +25,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <PersistGate loading={null} persistor={persistor}>
           <main className={merienda.className}>
             <Header />
+            <Cart />
             <Component {...pageProps} />
             <Footer />
           </main>

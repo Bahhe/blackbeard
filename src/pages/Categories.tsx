@@ -5,7 +5,7 @@ import SectionTitle from "~/components/SectionTitle";
 
 const productStyle = "flex items-center";
 const categoryNameStyle = "text-2xl rotate-90 font-extrabold";
-const imageStyle = "hover:scale-105 duration-500 cursor-pointer";
+const imageStyle = "hover:scale-105 duration-500 cursor-pointer w-auto h-auto";
 
 const Categories = () => {
   return (

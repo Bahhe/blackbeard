@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
-export const productsRouter = createTRPCRouter({
-  paginatedProducts: publicProcedure
+export const accessoriesRouter = createTRPCRouter({
+  paginatedAccessories: publicProcedure
     .input(
       z.object({
         limit: z.number().min(1).max(100).default(10),
@@ -14,7 +14,7 @@ export const productsRouter = createTRPCRouter({
     )
     .query(async ({ ctx, input }) => {
       const { cursor, limit } = input;
-      const products = await ctx.prisma.computer.findMany({
+      const accessories = await ctx.prisma.accessory.findMany({
         take: limit + 1,
         where: {
           title: {
@@ -47,25 +47,25 @@ export const productsRouter = createTRPCRouter({
       });
       let nextCursor: typeof cursor | undefined = undefined;
 
-      if (products.length > limit) {
-        const nextItem = products.pop() as (typeof products)[number];
+      if (accessories.length > limit) {
+        const nextItem = accessories.pop() as (typeof accessories)[number];
         nextCursor = nextItem.id;
       }
       return {
-        products,
+        accessories,
         nextCursor,
       };
     }),
   getTotal: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.computer.count();
+    return ctx.prisma.accessory.count();
   }),
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.computer.findMany();
+    return ctx.prisma.accessory.findMany();
   }),
   getProduct: publicProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
-      return ctx.prisma.computer.findUnique({
+      return ctx.prisma.accessory.findUnique({
         where: {
           id: input.id,
         },
@@ -78,11 +78,6 @@ export const productsRouter = createTRPCRouter({
         image: z.string({ required_error: "Invalid image" }),
         description: z.string({ required_error: "Invalid description" }),
         price: z.number({ required_error: "Invalid price" }),
-        cpu: z.string({ required_error: "Invalid cpu" }),
-        gpu: z.string({ required_error: "Invalid gpu" }),
-        ram: z.string({ required_error: "Invalid ram" }),
-        storage: z.string({ required_error: "Invalid storage" }),
-        display: z.string({ required_error: "Invalid display" }),
         category: z.string({ required_error: "Invalid category" }),
         brand: z.string({ required_error: "Invalid brand" }),
         section: z.string({ required_error: "Invalid section" }),
@@ -90,17 +85,12 @@ export const productsRouter = createTRPCRouter({
       })
     )
     .mutation(({ ctx, input }) => {
-      return ctx.prisma.computer.create({
+      return ctx.prisma.accessory.create({
         data: {
           title: input.title,
           image: input.image,
           description: input.description,
           price: input.price,
-          cpu: input.cpu,
-          gpu: input.gpu,
-          ram: input.ram,
-          storage: input.storage,
-          display: input.display,
           category: input.category,
           brand: input.brand,
           section: input.section,
@@ -116,11 +106,6 @@ export const productsRouter = createTRPCRouter({
         image: z.string({ required_error: "Invalid image" }),
         description: z.string({ required_error: "Invalid description" }),
         price: z.number({ required_error: "Invalid price" }),
-        cpu: z.string({ required_error: "Invalid cpu" }),
-        gpu: z.string({ required_error: "Invalid gpu" }),
-        ram: z.string({ required_error: "Invalid ram" }),
-        storage: z.string({ required_error: "Invalid storage" }),
-        display: z.string({ required_error: "Invalid display" }),
         category: z.string({ required_error: "Invalid category" }),
         brand: z.string({ required_error: "Invalid brand" }),
         section: z.string({ required_error: "Invalid section" }),
@@ -136,18 +121,13 @@ export const productsRouter = createTRPCRouter({
           image,
           description,
           price,
-          cpu,
-          gpu,
-          ram,
-          storage,
-          display,
           category,
           brand,
           section,
           stock,
         },
       }) => {
-        return ctx.prisma.computer.update({
+        return ctx.prisma.accessory.update({
           where: {
             id,
           },
@@ -156,11 +136,6 @@ export const productsRouter = createTRPCRouter({
             image,
             description,
             price,
-            cpu,
-            gpu,
-            ram,
-            storage,
-            display,
             category,
             brand,
             section,
@@ -172,7 +147,7 @@ export const productsRouter = createTRPCRouter({
   deleteProduct: publicProcedure
     .input(z.string())
     .mutation(({ ctx, input }) => {
-      return ctx.prisma.computer.delete({
+      return ctx.prisma.accessory.delete({
         where: {
           id: input,
         },

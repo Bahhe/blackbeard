@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import AccessoriesSwiper from "./AccessoriesSwiper";
-import Cart from "~/components/Cart";
 import Categories from "./Categories";
 import Discover from "./Discover";
 import LandingSection from "./LandingSection";
@@ -19,7 +18,6 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <LandingSection />
-        <Cart />
         <SecondSection />
         <Categories />
         <Discover />

@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -12,12 +13,6 @@ datasource db {
     // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
     // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
     url      = env("DATABASE_URL")
-}
-
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
 }
 
 // Necessary for Next auth
@@ -76,13 +71,27 @@ model Computer {
     title       String
     image       String
     description String
-    price       String
+    price       Int
     stock       String
     cpu         String
     ram         String
     storage     String
     display     String
     gpu         String
+}
+
+model Accessory {
+    id          String   @id @default(cuid())
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    category    String
+    brand       String
+    section     String
+    title       String
+    image       String
+    description String
+    price       Int
+    stock       String
 }
 
 model Cart {

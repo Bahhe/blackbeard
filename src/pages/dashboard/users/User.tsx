@@ -31,7 +31,7 @@ export default function User({
     <div key={id} className="flex max-h-96 items-center gap-5">
       <div>
         <Image
-          className="rounded-full"
+          className="h-auto w-auto rounded-full"
           src={image as string}
           width={50}
           height={25}

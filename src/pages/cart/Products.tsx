@@ -18,7 +18,13 @@ export default function Products({
   return (
     <div>
       <div className="flex items-center rounded-lg border p-5">
-        <Image src={image} width={150} height={90} alt="product" />
+        <Image
+          src={image}
+          width={150}
+          height={90}
+          alt="product"
+          className="h-auto w-auto"
+        />
         <h1 className="mx-5 w-60 truncate text-2xl font-bold capitalize">
           {title}
         </h1>

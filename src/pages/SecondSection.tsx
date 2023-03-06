@@ -1,8 +1,5 @@
 import Product from "./Product";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FaArrowCircleLeft } from "react-icons/fa";
-import { FaArrowCircleRight } from "react-icons/fa";
-
 import "swiper/css";
 import "swiper/css/navigation";
 

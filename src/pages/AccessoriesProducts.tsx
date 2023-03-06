@@ -10,7 +10,7 @@ import AccessoriesSwiperProduct from "./AccessoriesSwiperProduct";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 const AccessoriesProducts = () => {
-  const { data: products } = api.products.getAll.useQuery();
+  const { data: accessories } = api.accessories.getAll.useQuery();
   return (
     <section>
       <div className="mx-auto flex items-center rounded-2xl border shadow-xl">
@@ -27,11 +27,11 @@ const AccessoriesProducts = () => {
             modules={[Navigation]}
             className="mySwiper"
           >
-            {!products
+            {!accessories
               ? "loading products..."
-              : products.map((product) => (
-                  <SwiperSlide key={product.id}>
-                    <AccessoriesSwiperProduct product={product} />
+              : accessories.map((accessory) => (
+                  <SwiperSlide key={accessory.id}>
+                    <AccessoriesSwiperProduct accessory={accessory} />
                   </SwiperSlide>
                 ))}
           </Swiper>
@@ -42,7 +42,7 @@ const AccessoriesProducts = () => {
             width={317}
             height={424}
             alt="cover"
-            className="object-cover"
+            className="h-auto w-auto object-cover"
           />
         </div>
       </div>

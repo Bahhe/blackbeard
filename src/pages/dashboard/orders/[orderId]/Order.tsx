@@ -50,6 +50,7 @@ export default function Order({
                     width={100}
                     height={50}
                     alt="product"
+                    className="h-auto w-auto"
                   />
                   <div>
                     <h4 className="font-bold capitalize">{cart.title}</h4>

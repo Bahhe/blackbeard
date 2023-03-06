@@ -194,6 +194,7 @@ export default function Product({
                 width={150}
                 height={70}
                 alt="product"
+                className="h-auto w-auto"
               />
               <label>
                 <BsUpload className="mx-2 text-4xl" />

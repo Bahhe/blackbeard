@@ -43,7 +43,7 @@ const Cart = () => {
         )}
       </button>
 
-      <Link href="cart" className="relative">
+      <Link href="/cart" className="relative">
         <span className="absolute  top-0 right-0 flex h-5 w-5 translate-x-1 flex-col items-center justify-center rounded-full bg-red-500 text-sm text-white">
           {getTotalQuantity() || 0}
         </span>

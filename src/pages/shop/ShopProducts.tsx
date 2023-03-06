@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "~/utils/api";
+import { SearchContext } from "./Navigation";
 import Product from "./Product";
 
 function useScrollPosition() {
@@ -12,7 +13,7 @@ function useScrollPosition() {
     const winScroll =
       document.body.scrollTop || document.documentElement.scrollTop;
 
-    const scrolled = (winScroll / height) * 80;
+    const scrolled = (winScroll / height) * 100;
     setScrollPosition(scrolled);
   };
 
@@ -28,30 +29,47 @@ function useScrollPosition() {
 }
 
 export default function ShopProducts() {
+  const { search, category, filter } = useContext(SearchContext);
   const scrollPosition = useScrollPosition();
 
   const { data, hasNextPage, fetchNextPage, isFetching } =
     api.products.paginatedProducts.useInfiniteQuery(
       {
         limit: 8,
+        search: search,
+        category: category === "all" ? "" : category,
+        filter: filter,
       },
       { getNextPageParam: (lastPage) => lastPage.nextCursor }
     );
 
   const products = data?.pages.flatMap((page) => page.products) ?? [];
   useEffect(() => {
-    if (scrollPosition > 50 && hasNextPage && !isFetching) {
+    if (
+      scrollPosition > 90 &&
+      hasNextPage &&
+      !isFetching &&
+      !search &&
+      !category
+    ) {
       // eslint-disable-next-line
       fetchNextPage();
     }
-  }, [scrollPosition, hasNextPage, isFetching, fetchNextPage]);
+  }, [
+    scrollPosition,
+    hasNextPage,
+    isFetching,
+    fetchNextPage,
+    search,
+    category,
+  ]);
 
   return (
     <div className="mb-96 flex flex-wrap justify-center gap-10">
       {!products
         ? "loading products..."
-        : products.map((product) => (
-            <Product key={product.id} product={product} />
+        : products.map((product, index) => (
+            <Product key={index} product={product} />
           ))}
     </div>
   );
