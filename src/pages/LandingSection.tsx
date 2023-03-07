@@ -4,14 +4,10 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import LandingSectionSwiperProduct from "./LandingSectionSwiperProduct";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
-import type { Product } from "types";
+import { api } from "~/utils/api";
 
-type ProductProps = {
-  products: Product[];
-};
-
-const LandingSection = ({ products }: ProductProps) => {
-  console.log(products);
+const LandingSection = () => {
+  const { data: products } = api.products.getAll.useQuery({});
   return (
     <section className="mt-32">
       <div className="group relative mx-auto flex w-4/6 items-center py-28">

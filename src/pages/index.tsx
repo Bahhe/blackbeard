@@ -6,14 +6,10 @@ import LandingSection from "./LandingSection";
 import LaptopsSwiper from "./LaptopsSwiper";
 import Marketing from "./Marketing";
 import SecondSection from "./SecondSection";
-import { api } from "~/utils/api";
-import type { Product } from "types";
+import type { NextPage } from "next";
 
-type ProductProps = {
-  products: Product[];
-};
-
-const Home = ({ products }: ProductProps) => {
+const Home: NextPage = (props) => {
+  console.log(props);
   return (
     <>
       <Head>
@@ -22,7 +18,7 @@ const Home = ({ products }: ProductProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <LandingSection products={products} />
+        <LandingSection />
         <SecondSection />
         <Categories />
         <Discover />
@@ -33,20 +29,5 @@ const Home = ({ products }: ProductProps) => {
     </>
   );
 };
-
-export function getStaticProps() {
-  const { data } = api.products.getAll.useQuery({});
-  const products = data ?? [];
-
-  return {
-    props: {
-      products,
-    },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 10, // In seconds
-  };
-}
 
 export default Home;
