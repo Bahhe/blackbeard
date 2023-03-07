@@ -29,7 +29,7 @@ function useScrollPosition() {
 }
 
 export default function ShopProducts() {
-  const { search, category, filter } = useContext(SearchContext);
+  const { search, filter } = useContext(SearchContext);
   const scrollPosition = useScrollPosition();
 
   const { data, hasNextPage, fetchNextPage, isFetching } =
@@ -44,24 +44,11 @@ export default function ShopProducts() {
 
   const products = data?.pages.flatMap((page) => page.accessories) ?? [];
   useEffect(() => {
-    if (
-      scrollPosition > 90 &&
-      hasNextPage &&
-      !isFetching &&
-      !search &&
-      !category
-    ) {
+    if (scrollPosition > 90 && hasNextPage && !isFetching && !search) {
       // eslint-disable-next-line
       fetchNextPage();
     }
-  }, [
-    scrollPosition,
-    hasNextPage,
-    isFetching,
-    fetchNextPage,
-    search,
-    category,
-  ]);
+  }, [scrollPosition, hasNextPage, isFetching, fetchNextPage, search]);
 
   return (
     <div className="mb-96 flex flex-wrap justify-center gap-10">

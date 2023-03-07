@@ -1,6 +1,6 @@
 import { BsSearch } from "react-icons/bs";
 import { FiFilter } from "react-icons/fi";
-import { filters } from "./data";
+import { filters } from "~/utils/data";
 import { createContext, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import ShopProducts from "./ShopProducts";

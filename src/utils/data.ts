@@ -1,4 +1,4 @@
-export const categories = [
+export const categories: string[] = [
   "all",
   "all in one",
   "tablet",
@@ -8,7 +8,7 @@ export const categories = [
   "accessories",
   "other",
 ];
-export const filters = [
+export const filters: string[] = [
   "date-newest",
   "date-oldest",
   "price-high-to-low",
