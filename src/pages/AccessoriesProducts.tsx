@@ -29,11 +29,13 @@ const AccessoriesProducts = () => {
           >
             {!accessories
               ? "loading products..."
-              : accessories.map((accessory) => (
-                  <SwiperSlide key={accessory.id}>
-                    <AccessoriesSwiperProduct accessory={accessory} />
-                  </SwiperSlide>
-                ))}
+              : accessories
+                  .map((accessory) => (
+                    <SwiperSlide key={accessory.id}>
+                      <AccessoriesSwiperProduct accessory={accessory} />
+                    </SwiperSlide>
+                  ))
+                  .reverse()}
           </Swiper>
         </div>
         <div className="mt-10 mr-10 mb-10 self-start overflow-hidden rounded-3xl border shadow-xl">

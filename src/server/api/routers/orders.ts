@@ -33,7 +33,7 @@ export const ordersRouter = createTRPCRouter({
           z.object({
             id: z.string(),
             image: z.string(),
-            price: z.string(),
+            price: z.number(),
             quantity: z.number(),
             title: z.string(),
           })
@@ -69,7 +69,7 @@ export const ordersRouter = createTRPCRouter({
           z.object({
             id: z.string(),
             image: z.string(),
-            price: z.string(),
+            price: z.number(),
             quantity: z.number(),
             title: z.string(),
           })

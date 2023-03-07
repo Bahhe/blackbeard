@@ -85,6 +85,7 @@ export default function AddProductForm() {
             type="number"
             placeholder="price"
             {...register("price", {
+              valueAsNumber: true,
               required: true,
               max: 25000000,
               min: 30000,

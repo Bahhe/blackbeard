@@ -7,7 +7,7 @@ import { Navigation, Autoplay } from "swiper";
 import { api } from "~/utils/api";
 
 const SecondSection = () => {
-  const { data: products } = api.products.getAll.useQuery();
+  const { data: products } = api.products.getAll.useQuery({});
   return (
     <section className="mt-20">
       <div className="">
@@ -32,11 +32,13 @@ const SecondSection = () => {
             >
               {!products
                 ? "loading product..."
-                : products.map((product) => (
-                    <SwiperSlide key={product.id}>
-                      <Product key={product.id} product={product} />
-                    </SwiperSlide>
-                  ))}
+                : products
+                    .map((product) => (
+                      <SwiperSlide key={product.id}>
+                        <Product key={product.id} product={product} />
+                      </SwiperSlide>
+                    ))
+                    .reverse()}
             </Swiper>
           </div>
         </div>

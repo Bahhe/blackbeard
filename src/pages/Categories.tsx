@@ -2,10 +2,11 @@ import Image from "next/image";
 import prestige from "/public/prestige.webp";
 import headphone from "/public/headphone.png";
 import SectionTitle from "~/components/SectionTitle";
+import Link from "next/link";
 
 const productStyle = "flex items-center";
 const categoryNameStyle = "text-2xl rotate-90 font-extrabold";
-const imageStyle = "hover:scale-105 duration-500 cursor-pointer w-auto h-auto";
+const imageStyle = "hover:scale-105 duration-500 cursor-pointer";
 
 const Categories = () => {
   return (
@@ -13,30 +14,30 @@ const Categories = () => {
       <div>
         <SectionTitle name="choose a category" />
         <div className="flex items-center justify-center gap-10">
-          <div className={productStyle}>
+          <Link href="/shop/products" className={productStyle}>
             <h4 className={categoryNameStyle}>laptops</h4>
             <div>
               <Image
                 src={prestige}
-                width={898}
-                height={585}
+                width={300}
+                height={300}
                 alt="laptops"
                 className={imageStyle}
               />
             </div>
-          </div>
-          <div className={productStyle}>
+          </Link>
+          <Link href="/shop/accessories" className={productStyle}>
             <h4 className={categoryNameStyle}>accessories</h4>
             <div>
               <Image
                 src={headphone}
-                width={898}
-                height={585}
+                width={300}
+                height={300}
                 alt="categories"
                 className={imageStyle}
               />
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ export default function AccessoriesSwiperProduct({
   return (
     <div className="mx-5">
       <Link
-        href={`/shop/product/${id}`}
+        href={`/shop/accessory/${id}`}
         className="flex aspect-square flex-col items-center justify-center rounded-3xl border"
       >
         <Image
@@ -26,7 +26,7 @@ export default function AccessoriesSwiperProduct({
       </Link>
       <div className="mt-3 flex flex-col items-center gap-4">
         <Link
-          href={`/shop/product/${id}`}
+          href={`/shop/accessory/${id}`}
           className="text-xl font-bold capitalize"
         >
           {title}

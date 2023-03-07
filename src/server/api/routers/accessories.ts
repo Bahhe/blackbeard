@@ -8,7 +8,6 @@ export const accessoriesRouter = createTRPCRouter({
         limit: z.number().min(1).max(100).default(10),
         cursor: z.string().nullish(),
         search: z.string().optional(),
-        category: z.string(),
         filter: z.string(),
       })
     )
@@ -20,9 +19,6 @@ export const accessoriesRouter = createTRPCRouter({
           title: {
             contains: input.search,
             mode: "insensitive",
-          },
-          category: {
-            contains: input.category,
           },
         },
         orderBy: [

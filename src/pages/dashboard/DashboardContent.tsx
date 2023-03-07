@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillPersonFill, BsHeadphones, BsLaptop } from "react-icons/bs";
 import { CgNotes } from "react-icons/cg";
-import { MdInventory } from "react-icons/md";
 import { api } from "~/utils/api";
 import ChartSection from "./ChartSection";
 
@@ -12,6 +11,7 @@ export default function DashboardContent() {
   const quantityStyle = "text-lg text-red-500";
 
   const { data: totalProducts } = api.products.getTotal.useQuery();
+  const { data: totalAccessories } = api.accessories.getTotal.useQuery();
   const { data: totalOrders } = api.orders.getTotal.useQuery();
   const { data: totalUsers } = api.users.getTotal.useQuery();
 
@@ -20,10 +20,17 @@ export default function DashboardContent() {
       <div className="flex flex-col items-center justify-center">
         <div className="flex items-center gap-10">
           <Link className={boxStyle} href="/dashboard/products">
-            <MdInventory className={iconStyle} />
+            <BsLaptop className={iconStyle} />
             <div>
-              <h1 className={titleStyle}>products</h1>
+              <h1 className={titleStyle}>laptops</h1>
               <p className={quantityStyle}>{totalProducts || "0"}</p>
+            </div>
+          </Link>
+          <Link className={boxStyle} href="/dashboard/products">
+            <BsHeadphones className={iconStyle} />
+            <div>
+              <h1 className={titleStyle}>accessories</h1>
+              <p className={quantityStyle}>{totalAccessories || "0"}</p>
             </div>
           </Link>
           <Link href="/dashboard/users" className={boxStyle}>

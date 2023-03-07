@@ -1,13 +1,15 @@
 import { AiOutlineLogout } from "react-icons/ai";
-import { BsFillPersonFill } from "react-icons/bs";
-import { MdAddBox, MdInventory, MdPeople } from "react-icons/md";
+import { BsFillPersonFill, BsHeadphones, BsLaptop } from "react-icons/bs";
+import { MdAddBox, MdPeople } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { CgNotes, CgWebsite } from "react-icons/cg";
 import Link from "next/link";
 import { api } from "~/utils/api";
 import { signOut } from "next-auth/react";
+import { useState } from "react";
 
 export default function AdminHeader() {
+  const [show, setShow] = useState(false);
   const { data: ordersCount } = api.orders.getTotal.useQuery();
   return (
     <main className="flex justify-center">
@@ -48,13 +50,26 @@ export default function AdminHeader() {
           </li>
           <li>
             <Link href="/dashboard/products">
-              <MdInventory />
+              <BsLaptop />
             </Link>
           </li>
-          <li className="text-7xl">
-            <Link href="/dashboard/products/add">
-              <MdAddBox />
+          <li>
+            <Link href="/dashboard/accessories">
+              <BsHeadphones />
             </Link>
+          </li>
+          <li className="relative cursor-pointer text-7xl">
+            <MdAddBox onClick={() => setShow((prev) => !prev)} />
+            {show && (
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[110%] text-5xl text-red-500">
+                <Link title="add laptop" href="/dashboard/products/add">
+                  <BsLaptop />
+                </Link>
+                <Link title="add accessory" href="/dashboard/accessories/add">
+                  <BsHeadphones />
+                </Link>
+              </div>
+            )}
           </li>
         </ul>
       </nav>

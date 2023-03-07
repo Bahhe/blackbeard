@@ -3,7 +3,7 @@ import { api } from "~/utils/api";
 import DiscoverProduct from "./DiscoverProduct";
 
 const Discover = () => {
-  const { data: product } = api.products.getAll.useQuery();
+  const { data: product } = api.products.getAll.useQuery({});
 
   return (
     <section className="marquee h-[500px]">

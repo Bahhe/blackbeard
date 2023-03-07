@@ -59,9 +59,22 @@ export const productsRouter = createTRPCRouter({
   getTotal: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.computer.count();
   }),
-  getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.computer.findMany();
-  }),
+  getAll: publicProcedure
+    .input(
+      z.object({
+        search: z.string().optional(),
+      })
+    )
+    .query(({ ctx, input }) => {
+      return ctx.prisma.computer.findMany({
+        where: {
+          title: {
+            contains: input.search,
+            mode: "insensitive",
+          },
+        },
+      });
+    }),
   getProduct: publicProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {

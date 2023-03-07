@@ -10,7 +10,7 @@ import { api } from "~/utils/api";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 const LaptopsProducts = () => {
-  const { data: products } = api.products.getAll.useQuery();
+  const { data: products } = api.products.getAll.useQuery({});
   return (
     <section>
       <div className="mx-auto flex items-center rounded-2xl border shadow-xl">
@@ -38,11 +38,13 @@ const LaptopsProducts = () => {
           >
             {!products
               ? "loading products..."
-              : products.map((product) => (
-                  <SwiperSlide key={product.id}>
-                    <LaptopsSwiperProduct product={product} />
-                  </SwiperSlide>
-                ))}
+              : products
+                  .map((product) => (
+                    <SwiperSlide key={product.id}>
+                      <LaptopsSwiperProduct product={product} />
+                    </SwiperSlide>
+                  ))
+                  .reverse()}
           </Swiper>
         </div>
       </div>

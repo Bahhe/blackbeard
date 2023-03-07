@@ -99,7 +99,7 @@ model Cart {
     id       String
     image    String
     title    String
-    price    String
+    price    Int
     quantity Int
     Order    Order?  @relation(fields: [orderId], references: [id])
     orderId  String?
