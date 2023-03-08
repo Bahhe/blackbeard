@@ -31,6 +31,7 @@
     "react-redux": "^8.0.5",
     "react-switch": "^7.0.0",
     "redux-persist": "^6.0.0",
+    "sharp": "^0.31.3",
     "superjson": "1.9.1",
     "swiper": "^9.0.5",
     "zod": "^3.20.2"

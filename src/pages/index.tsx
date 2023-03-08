@@ -8,8 +8,7 @@ import Marketing from "./Marketing";
 import SecondSection from "./SecondSection";
 import type { NextPage } from "next";
 
-const Home: NextPage = (props) => {
-  console.log(props);
+const Home: NextPage = () => {
   return (
     <>
       <Head>

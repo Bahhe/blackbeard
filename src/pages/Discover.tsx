@@ -1,6 +1,10 @@
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import SectionTitle from "~/components/SectionTitle";
+import { createInnerTRPCContext } from "~/server/api/trpc";
 import { api } from "~/utils/api";
 import DiscoverProduct from "./DiscoverProduct";
+import superjson from "superjson";
+import { appRouter } from "~/server/api/root";
 
 const Discover = () => {
   const { data: product } = api.products.getAll.useQuery({});
@@ -20,5 +24,21 @@ const Discover = () => {
     </section>
   );
 };
+
+export async function getStaticProps() {
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: createInnerTRPCContext({ session: null }),
+    transformer: superjson,
+  });
+
+  await ssg.products.getAll.fetch({});
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+    revalidate: 60,
+  };
+}
 
 export default Discover;

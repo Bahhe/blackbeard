@@ -1,6 +1,5 @@
 import "swiper/css";
 import "swiper/css/navigation";
-
 import { Navigation } from "swiper";
 import Image from "next/image";
 import cover from "/public/laptopsCover.png";
@@ -8,6 +7,10 @@ import LaptopsSwiperProduct from "./LaptopsSwiperProduct";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { api } from "~/utils/api";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import { appRouter } from "~/server/api/root";
+import { createInnerTRPCContext } from "~/server/api/trpc";
+import superjson from "superjson";
 
 const LaptopsProducts = () => {
   const { data: products } = api.products.getAll.useQuery({});
@@ -51,5 +54,21 @@ const LaptopsProducts = () => {
     </section>
   );
 };
+
+export async function getStaticProps() {
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: createInnerTRPCContext({ session: null }),
+    transformer: superjson,
+  });
+
+  await ssg.products.getAll.fetch({});
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+    revalidate: 60,
+  };
+}
 
 export default LaptopsProducts;

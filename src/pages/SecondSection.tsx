@@ -5,6 +5,10 @@ import "swiper/css/navigation";
 
 import { Navigation, Autoplay } from "swiper";
 import { api } from "~/utils/api";
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import { appRouter } from "~/server/api/root";
+import { createInnerTRPCContext } from "~/server/api/trpc";
+import superjson from "superjson";
 
 const SecondSection = () => {
   const { data: products } = api.products.getAll.useQuery({});
@@ -46,5 +50,21 @@ const SecondSection = () => {
     </section>
   );
 };
+
+export async function getStaticProps() {
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: createInnerTRPCContext({ session: null }),
+    transformer: superjson,
+  });
+
+  await ssg.products.getAll.fetch({});
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+    revalidate: 60,
+  };
+}
 
 export default SecondSection;

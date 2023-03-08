@@ -1,7 +1,11 @@
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import { useContext, useEffect, useState } from "react";
+import { appRouter } from "~/server/api/root";
+import { createInnerTRPCContext } from "~/server/api/trpc";
 import { api } from "~/utils/api";
 import { SearchContext } from "./Navigation";
 import Product from "./Product";
+import superjson from "superjson";
 
 function useScrollPosition() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -59,4 +63,20 @@ export default function ShopProducts() {
           ))}
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: createInnerTRPCContext({ session: null }),
+    transformer: superjson,
+  });
+
+  await ssg.accessories.getAll.fetch();
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+    revalidate: 60,
+  };
 }
