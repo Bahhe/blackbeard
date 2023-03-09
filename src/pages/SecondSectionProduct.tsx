@@ -9,7 +9,7 @@ type ProductProps = {
   product: Product;
 };
 
-export default function Product({ product }: ProductProps) {
+export default function SecondSectionProduct({ product }: ProductProps) {
   const { id, title, description, image, price } = product;
   const dispatch = useDispatch();
   return (

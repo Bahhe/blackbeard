@@ -1,7 +1,8 @@
 import { BsHeadphones } from "react-icons/bs";
+import type { Accessory } from "types";
 import AccessoriesProducts from "./AccessoriesProducts";
 
-const AccessoriesSwiper = () => {
+const AccessoriesSwiper = ({ accessories }: { accessories?: Accessory[] }) => {
   return (
     <section className="pt-20">
       <div className="mx-auto w-5/6">
@@ -15,7 +16,7 @@ const AccessoriesSwiper = () => {
             </h5>
           </div>
         </div>
-        <AccessoriesProducts />
+        <AccessoriesProducts accessories={accessories} />
       </div>
     </section>
   );

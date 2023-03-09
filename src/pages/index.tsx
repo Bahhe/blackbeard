@@ -7,8 +7,13 @@ import LaptopsSwiper from "./LaptopsSwiper";
 import Marketing from "./Marketing";
 import SecondSection from "./SecondSection";
 import type { NextPage } from "next";
+import { api } from "~/utils/api";
 
-const Home: NextPage = () => {
+const Home: NextPage = (props) => {
+  console.log(props);
+
+  const { data: accessories } = api.accessories.getAll.useQuery();
+  const { data: products } = api.products.getAll.useQuery({});
   return (
     <>
       <Head>
@@ -17,12 +22,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <LandingSection />
-        <SecondSection />
+        <LandingSection products={products} />
+        <SecondSection products={products} />
         <Categories />
-        <Discover />
-        <LaptopsSwiper />
-        <AccessoriesSwiper />
+        <Discover products={products} />
+        <LaptopsSwiper products={products} />
+        <AccessoriesSwiper accessories={accessories} />
         <Marketing />
       </main>
     </>

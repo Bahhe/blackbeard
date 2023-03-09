@@ -4,14 +4,9 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import LandingSectionSwiperProduct from "./LandingSectionSwiperProduct";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
-import { api } from "~/utils/api";
-import { appRouter } from "~/server/api/root";
-import { createInnerTRPCContext } from "~/server/api/trpc";
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
-import superjson from "superjson";
+import type { Product } from "types";
 
-const LandingSection = () => {
-  const { data: products } = api.products.getAll.useQuery({});
+const LandingSection = ({ products }: { products?: Product[] }) => {
   return (
     <section className="mt-32">
       <div className="group relative mx-auto flex w-4/6 items-center py-28">
@@ -40,21 +35,5 @@ const LandingSection = () => {
     </section>
   );
 };
-
-export async function getStaticProps() {
-  const ssg = createProxySSGHelpers({
-    router: appRouter,
-    ctx: createInnerTRPCContext({ session: null }),
-    transformer: superjson,
-  });
-
-  await ssg.products.getAll.fetch({});
-  return {
-    props: {
-      trpcState: ssg.dehydrate(),
-    },
-    revalidate: 60,
-  };
-}
 
 export default LandingSection;

@@ -1,7 +1,8 @@
 import { BsLaptop } from "react-icons/bs";
+import { type Product } from "types";
 import LaptopsProducts from "./laptopsProducts";
 
-const LaptopsSwiper = () => {
+const LaptopsSwiper = ({ products }: { products?: Product[] }) => {
   return (
     <section className="pt-20">
       <div className="mx-auto w-5/6">
@@ -15,7 +16,7 @@ const LaptopsSwiper = () => {
             </h5>
           </div>
         </div>
-        <LaptopsProducts />
+        <LaptopsProducts products={products} />
       </div>
     </section>
   );

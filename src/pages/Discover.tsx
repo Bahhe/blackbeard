@@ -1,22 +1,16 @@
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import SectionTitle from "~/components/SectionTitle";
-import { createInnerTRPCContext } from "~/server/api/trpc";
-import { api } from "~/utils/api";
 import DiscoverProduct from "./DiscoverProduct";
-import superjson from "superjson";
-import { appRouter } from "~/server/api/root";
+import type { Product } from "types";
 
-const Discover = () => {
-  const { data: product } = api.products.getAll.useQuery({});
-
+const Discover = ({ products }: { products?: Product[] }) => {
   return (
     <section className="marquee h-[500px]">
       <SectionTitle name="discover" />
       <div className="track">
         <div className="content flex min-w-max gap-10">
-          {!product
+          {!products
             ? "loading products..."
-            : product.map((product) => (
+            : products.map((product) => (
                 <DiscoverProduct key={product.id} product={product} />
               ))}
         </div>
@@ -24,21 +18,5 @@ const Discover = () => {
     </section>
   );
 };
-
-export async function getStaticProps() {
-  const ssg = createProxySSGHelpers({
-    router: appRouter,
-    ctx: createInnerTRPCContext({ session: null }),
-    transformer: superjson,
-  });
-
-  await ssg.products.getAll.fetch({});
-  return {
-    props: {
-      trpcState: ssg.dehydrate(),
-    },
-    revalidate: 60,
-  };
-}
 
 export default Discover;

@@ -1,17 +1,12 @@
-import Product from "./Product";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
 import { Navigation, Autoplay } from "swiper";
-import { api } from "~/utils/api";
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
-import { appRouter } from "~/server/api/root";
-import { createInnerTRPCContext } from "~/server/api/trpc";
-import superjson from "superjson";
+import type { Product } from "types";
+import SecondSectionProduct from "./SecondSectionProduct";
 
-const SecondSection = () => {
-  const { data: products } = api.products.getAll.useQuery({});
+const SecondSection = ({ products }: { products?: Product[] }) => {
   return (
     <section className="mt-20">
       <div className="">
@@ -39,7 +34,10 @@ const SecondSection = () => {
                 : products
                     .map((product) => (
                       <SwiperSlide key={product.id}>
-                        <Product key={product.id} product={product} />
+                        <SecondSectionProduct
+                          key={product.id}
+                          product={product}
+                        />
                       </SwiperSlide>
                     ))
                     .reverse()}
@@ -50,21 +48,5 @@ const SecondSection = () => {
     </section>
   );
 };
-
-export async function getStaticProps() {
-  const ssg = createProxySSGHelpers({
-    router: appRouter,
-    ctx: createInnerTRPCContext({ session: null }),
-    transformer: superjson,
-  });
-
-  await ssg.products.getAll.fetch({});
-  return {
-    props: {
-      trpcState: ssg.dehydrate(),
-    },
-    revalidate: 60,
-  };
-}
 
 export default SecondSection;

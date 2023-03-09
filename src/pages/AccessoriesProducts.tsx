@@ -5,16 +5,11 @@ import { Navigation } from "swiper";
 import Image from "next/image";
 import cover from "/public/accessoriesCover.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { api } from "~/utils/api";
 import AccessoriesSwiperProduct from "./AccessoriesSwiperProduct";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
-import { appRouter } from "~/server/api/root";
-import { createInnerTRPCContext } from "~/server/api/trpc";
-import superjson from "superjson";
+import type { Accessory } from "types";
 
-const AccessoriesProducts = () => {
-  const { data: accessories } = api.accessories.getAll.useQuery();
+const AccessoriesProducts = ({accessories}: {accessories?: Accessory[]}) => {
   return (
     <section>
       <div className="mx-auto flex items-center rounded-2xl border shadow-xl">
@@ -55,21 +50,5 @@ const AccessoriesProducts = () => {
     </section>
   );
 };
-
-export async function getStaticProps() {
-  const ssg = createProxySSGHelpers({
-    router: appRouter,
-    ctx: createInnerTRPCContext({ session: null }),
-    transformer: superjson,
-  });
-
-  await ssg.accessories.getAll.fetch();
-  return {
-    props: {
-      trpcState: ssg.dehydrate(),
-    },
-    revalidate: 60,
-  };
-}
 
 export default AccessoriesProducts;
