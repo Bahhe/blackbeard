@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "types";
-import OrderSummary from "./OrderSummary";
-import Products from "./Products";
+import OrderSummary from "~/sections/cart/OrderSummary";
+import Products from "~/sections/cart/Products";
 
 export default function Cart() {
   const cart = useSelector((state: RootState) => state.cart);

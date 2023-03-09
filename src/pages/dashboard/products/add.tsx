@@ -1,8 +1,8 @@
 import AdminHeader from "~/components/AdminHeader";
-import PageTitle from "../PageTitle";
-import AddProductForm from "./AddProductForm";
 import type { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
+import PageTitle from "~/components/PageTitle";
+import AddProductForm from "~/sections/dashboard/products/add/AddProductForm";
 
 export default function Add() {
   return (

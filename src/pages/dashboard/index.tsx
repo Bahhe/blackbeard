@@ -1,7 +1,7 @@
 import type { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import AdminHeader from "~/components/AdminHeader";
-import DashboardContent from "./DashboardContent";
+import DashboardContent from "~/sections/dashboard/DashboardContent";
 
 export default function Dashboard() {
   return (

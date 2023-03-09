@@ -1,8 +1,8 @@
 import AdminHeader from "~/components/AdminHeader";
-import OrdersPageContent from "./OrdersPageContent";
-import PageTitle from "./PageTitle";
 import type { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
+import PageTitle from "~/components/PageTitle";
+import OrdersPageContent from "~/sections/dashboard/orders/OrdersPageContent";
 
 export default function Orders() {
   return (

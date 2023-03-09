@@ -1,4 +1,4 @@
-import Navigation from "./Navigation";
+import Navigation from "~/sections/shop/products/Navigation";
 
 export default function Shop() {
   return (

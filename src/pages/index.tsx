@@ -1,17 +1,19 @@
 import Head from "next/head";
-import AccessoriesSwiper from "./AccessoriesSwiper";
-import Categories from "./Categories";
-import Discover from "./Discover";
-import LandingSection from "./LandingSection";
-import LaptopsSwiper from "./LaptopsSwiper";
-import Marketing from "./Marketing";
-import SecondSection from "./SecondSection";
 import type { NextPage } from "next";
 import { api } from "~/utils/api";
+import LandingSection from "~/sections/showcase/LandingSection";
+import SecondSection from "~/sections/newArrivals/SecondSection";
+import Categories from "~/sections/categories/Categories";
+import Discover from "~/sections/discover/Discover";
+import LaptopsSwiper from "~/sections/laptops/LaptopsSwiper";
+import AccessoriesSwiper from "~/sections/accessories/AccessoriesSwiper";
+import Marketing from "~/sections/marketing/Marketing";
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import { createInnerTRPCContext } from "~/server/api/trpc";
+import { appRouter } from "~/server/api/root";
+import superjson from "superjson";
 
-const Home: NextPage = (props) => {
-  console.log(props);
-
+const Home: NextPage = () => {
   const { data: accessories } = api.accessories.getAll.useQuery();
   const { data: products } = api.products.getAll.useQuery({});
   return (
@@ -33,5 +35,21 @@ const Home: NextPage = (props) => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: createInnerTRPCContext({ session: null }),
+    transformer: superjson,
+  });
+  await ssg.products.getAll.prefetch({});
+  await ssg.accessories.getAll.prefetch();
+
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+  };
+}
 
 export default Home;

@@ -1,8 +1,8 @@
 import AdminHeader from "~/components/AdminHeader";
-import PageTitle from "./PageTitle";
-import ProductsPageContent from "./ProductsPageContent";
 import type { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
+import PageTitle from "~/components/PageTitle";
+import ProductsPageContent from "~/sections/dashboard/accessories/ProductsPageContent";
 
 export default function Products() {
   return (

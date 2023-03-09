@@ -1,25 +1,17 @@
 import { useRouter } from "next/router";
-import AdminHeader from "~/components/AdminHeader";
 import { api } from "~/utils/api";
-import Order from "./Order";
 import type { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
+import Product from "~/sections/dashboard/products/product/Product";
 
-export default function OrderPage() {
+export default function EditProduct() {
   const router = useRouter();
-  const { orderId } = router.query;
-  const { data: order } = api.orders.getOrder.useQuery({
-    id: orderId as string,
+  const { productId } = router.query;
+  const { data: product } = api.products.getProduct.useQuery({
+    id: productId as string,
   });
-  if (!order) return <p>loading order...</p>;
-  return (
-    <>
-      <AdminHeader />
-      <section className="flex items-center justify-center">
-        <Order order={order} />
-      </section>
-    </>
-  );
+  if (!product) return <p>loading product...</p>;
+  return <Product product={product} />;
 }
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);

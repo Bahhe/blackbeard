@@ -1,17 +1,17 @@
-import { useRouter } from "next/router";
-import { api } from "~/utils/api";
-import Product from "./Product";
+import AdminHeader from "~/components/AdminHeader";
 import type { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
+import PageTitle from "~/components/PageTitle";
+import UsersPageContent from "~/sections/dashboard/users/UsersPageContent";
 
-export default function EditProduct() {
-  const router = useRouter();
-  const { productId } = router.query;
-  const { data: product } = api.products.getProduct.useQuery({
-    id: productId as string,
-  });
-  if (!product) return <p>loading product...</p>;
-  return <Product product={product} />;
+export default function Users() {
+  return (
+    <section>
+      <AdminHeader />
+      <PageTitle title="users" />
+      <UsersPageContent />
+    </section>
+  );
 }
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
