@@ -9,7 +9,11 @@ import AccessoriesSwiperProduct from "./AccessoriesSwiperProduct";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import type { Accessory } from "types";
 
-const AccessoriesProducts = ({accessories}: {accessories?: Accessory[]}) => {
+const AccessoriesProducts = ({
+  accessories,
+}: {
+  accessories?: Accessory[];
+}) => {
   return (
     <section>
       <div className="mx-auto flex items-center rounded-2xl border shadow-xl">
@@ -37,14 +41,8 @@ const AccessoriesProducts = ({accessories}: {accessories?: Accessory[]}) => {
                   .reverse()}
           </Swiper>
         </div>
-        <div className="mt-10 mr-10 mb-10 self-start overflow-hidden rounded-3xl border shadow-xl">
-          <Image
-            src={cover}
-            width={317}
-            height={424}
-            alt="cover"
-            className="h-auto w-auto object-cover"
-          />
+        <div className="mt-10 mr-10 mb-10 self-start overflow-hidden rounded-3xl border shadow-lg">
+          <Image src={cover} width={380} alt="cover" className="object-cover" />
         </div>
       </div>
     </section>

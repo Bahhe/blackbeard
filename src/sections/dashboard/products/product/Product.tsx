@@ -40,6 +40,7 @@ export default function Product({
   const { mutate } = api.products.updateProduct.useMutation({
     async onSuccess() {
       await utils.products.getAll.invalidate();
+      await router.push("/dashboard/products");
     },
   });
 
@@ -84,9 +85,8 @@ export default function Product({
     },
   });
 
-  const onSubmit: SubmitHandler<Product> = async (data) => {
+  const onSubmit: SubmitHandler<Product> = (data) => {
     mutate({ ...data, image: url ? url : image, id: id });
-    await router.push("/dashboard/products");
   };
   console.log(errors);
 
@@ -104,18 +104,12 @@ export default function Product({
               placeholder="title"
               {...register("title", {
                 required: true,
-                max: 24,
-                min: 16,
-                maxLength: 24,
               })}
               className={inputStyle}
             />
             <textarea
               {...register("description", {
                 required: true,
-                max: 200,
-                min: 50,
-                maxLength: 200,
               })}
               placeholder="description"
               className={inputStyle}
@@ -124,10 +118,8 @@ export default function Product({
               type="number"
               placeholder="price"
               {...register("price", {
+                valueAsNumber: true,
                 required: true,
-                max: 25000000,
-                min: 30000,
-                maxLength: 25000000,
               })}
               className={inputStyle}
             />
@@ -136,9 +128,6 @@ export default function Product({
               placeholder="cpu"
               {...register("cpu", {
                 required: true,
-                max: 25,
-                min: 16,
-                maxLength: 24,
               })}
               className={inputStyle}
             />
@@ -147,9 +136,6 @@ export default function Product({
               placeholder="ram"
               {...register("ram", {
                 required: true,
-                max: 15,
-                min: 16,
-                maxLength: 15,
               })}
               className={inputStyle}
             />
@@ -158,9 +144,6 @@ export default function Product({
               placeholder="storage"
               {...register("storage", {
                 required: true,
-                max: 25,
-                min: 16,
-                maxLength: 25,
               })}
               className={inputStyle}
             />
@@ -169,9 +152,6 @@ export default function Product({
               placeholder="display"
               {...register("display", {
                 required: true,
-                max: 25,
-                min: 16,
-                maxLength: 25,
               })}
               className={inputStyle}
             />
@@ -180,9 +160,6 @@ export default function Product({
               placeholder="gpu"
               {...register("gpu", {
                 required: true,
-                max: 25,
-                min: 16,
-                maxLength: 24,
               })}
               className={inputStyle}
             />
@@ -229,9 +206,6 @@ export default function Product({
               placeholder="stock"
               {...register("stock", {
                 required: true,
-                max: 100,
-                min: 1,
-                maxLength: 100,
               })}
               className={inputStyle}
             />

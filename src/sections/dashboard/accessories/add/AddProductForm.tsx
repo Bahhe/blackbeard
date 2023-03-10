@@ -19,6 +19,7 @@ export default function AddProductForm() {
   const { mutate, isError } = api.accessories.createProduct.useMutation({
     async onSuccess() {
       await utils.accessories.getAll.invalidate();
+      await router.push("/dashboard/accessories");
     },
   });
 
@@ -52,7 +53,6 @@ export default function AddProductForm() {
     if (isError) {
       return alert(`something went wrong`);
     }
-    await router.push("/dashboard/accessories");
   };
   console.log(errors);
 
@@ -86,18 +86,12 @@ export default function AddProductForm() {
           placeholder="title"
           {...register("title", {
             required: true,
-            max: 24,
-            min: 16,
-            maxLength: 24,
           })}
           className={inputStyle}
         />
         <textarea
           {...register("description", {
             required: true,
-            max: 200,
-            min: 50,
-            maxLength: 200,
           })}
           placeholder="description"
           className={inputStyle}
@@ -108,8 +102,6 @@ export default function AddProductForm() {
           {...register("price", {
             valueAsNumber: true,
             required: true,
-            max: 50000,
-            min: 1000,
           })}
           className={inputStyle}
         />
@@ -118,9 +110,6 @@ export default function AddProductForm() {
           placeholder="stock"
           {...register("stock", {
             required: true,
-            max: 100,
-            min: 1,
-            maxLength: 100,
           })}
           className={inputStyle}
         />
@@ -137,9 +126,6 @@ export default function AddProductForm() {
           placeholder="category"
           {...register("category", {
             required: true,
-            max: 100,
-            min: 1,
-            maxLength: 100,
           })}
           className={inputStyle}
         />
@@ -148,9 +134,6 @@ export default function AddProductForm() {
           placeholder="section"
           {...register("section", {
             required: true,
-            max: 100,
-            min: 1,
-            maxLength: 100,
           })}
           className={inputStyle}
         />

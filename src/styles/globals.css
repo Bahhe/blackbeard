@@ -7,14 +7,14 @@
   width: 100vw;
   max-width: 100%;
   overflow: hidden;
-  height: 700px;
+  height: 600px;
 }
 
 .track {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 32s linear infinite;
+  animation: marquee 100s linear infinite;
 }
 .track:hover {
   animation-play-state: paused;
@@ -25,6 +25,6 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-80%);
   }
 }

@@ -27,9 +27,9 @@ const Home: NextPage = () => {
         <LandingSection products={products} />
         <SecondSection products={products} />
         <Categories />
-        <Discover products={products} />
         <LaptopsSwiper products={products} />
         <AccessoriesSwiper accessories={accessories} />
+        <Discover products={products} accessories={accessories} />
         <Marketing />
       </main>
     </>

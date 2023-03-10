@@ -19,13 +19,7 @@ export default function Product({
 
   return (
     <div className="flex max-h-96 items-center gap-8">
-      <Image
-        src={image}
-        width={100}
-        height={50}
-        alt="product"
-        className="h-auto w-auto"
-      />
+      <Image src={image} width={50} height={50} alt="product" />
       <h2 className="w-40 truncate font-semibold capitalize">{title}</h2>
       <p className="w-32 capitalize text-red-500">{price} da</p>
       <div className="flex items-center gap-5">

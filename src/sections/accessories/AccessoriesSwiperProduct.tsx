@@ -14,14 +14,14 @@ export default function AccessoriesSwiperProduct({
     <div className="mx-5">
       <Link
         href={`/shop/accessory/${id}`}
-        className="flex aspect-square flex-col items-center justify-center rounded-3xl border"
+        className="flex h-52 w-80 flex-col items-center justify-center rounded-3xl border"
       >
         <Image
           src={image}
-          width={898}
-          height={595}
+          width={500}
+          height={500}
           alt="laptop"
-          className="h-auto w-auto"
+          className="h-5/6 w-auto"
         />
       </Link>
       <div className="mt-3 flex flex-col items-center gap-4">

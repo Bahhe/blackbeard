@@ -5,7 +5,7 @@ import SectionTitle from "~/components/SectionTitle";
 import Link from "next/link";
 
 const productStyle = "flex items-center";
-const categoryNameStyle = "text-2xl rotate-90 font-extrabold";
+const categoryNameStyle = "text-2xl rotate-90 font-extrabold capitalize";
 const imageStyle = "hover:scale-105 duration-500 cursor-pointer";
 
 const Categories = () => {

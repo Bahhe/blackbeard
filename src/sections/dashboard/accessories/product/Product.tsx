@@ -35,6 +35,7 @@ export default function Product({
   const { mutate } = api.accessories.updateProduct.useMutation({
     async onSuccess() {
       await utils.accessories.getAll.invalidate();
+      await router.push("/dashboard/accessories");
     },
   });
 
@@ -74,9 +75,8 @@ export default function Product({
     },
   });
 
-  const onSubmit: SubmitHandler<Accessory> = async (data) => {
+  const onSubmit: SubmitHandler<Accessory> = (data) => {
     mutate({ ...data, image: url ? url : image, id: id });
-    await router.push("/dashboard/accessories");
   };
   console.log(errors);
 
@@ -111,18 +111,12 @@ export default function Product({
             placeholder="title"
             {...register("title", {
               required: true,
-              max: 24,
-              min: 16,
-              maxLength: 24,
             })}
             className={inputStyle}
           />
           <textarea
             {...register("description", {
               required: true,
-              max: 200,
-              min: 50,
-              maxLength: 200,
             })}
             placeholder="description"
             className={inputStyle}
@@ -133,8 +127,6 @@ export default function Product({
             {...register("price", {
               valueAsNumber: true,
               required: true,
-              max: 50000,
-              min: 1000,
             })}
             className={inputStyle}
           />
@@ -143,9 +135,6 @@ export default function Product({
             placeholder="stock"
             {...register("stock", {
               required: true,
-              max: 100,
-              min: 1,
-              maxLength: 100,
             })}
             className={inputStyle}
           />
@@ -162,9 +151,6 @@ export default function Product({
             placeholder="category"
             {...register("category", {
               required: true,
-              max: 100,
-              min: 1,
-              maxLength: 100,
             })}
             className={inputStyle}
           />
@@ -173,9 +159,6 @@ export default function Product({
             placeholder="section"
             {...register("section", {
               required: true,
-              max: 100,
-              min: 1,
-              maxLength: 100,
             })}
             className={inputStyle}
           />

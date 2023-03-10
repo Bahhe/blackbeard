@@ -19,6 +19,7 @@ export default function AddProductForm() {
   const { mutate } = api.products.createProduct.useMutation({
     async onSuccess() {
       await utils.products.getAll.invalidate();
+      await router.push("/dashboard/products");
     },
   });
 
@@ -47,9 +48,8 @@ export default function AddProductForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<Product>();
-  const onSubmit: SubmitHandler<Product> = async (data) => {
+  const onSubmit: SubmitHandler<Product> = (data) => {
     mutate({ ...data, image: url });
-    await router.push("/dashboard/products");
   };
   console.log(errors);
 
@@ -65,18 +65,12 @@ export default function AddProductForm() {
             placeholder="title"
             {...register("title", {
               required: true,
-              max: 24,
-              min: 16,
-              maxLength: 24,
             })}
             className={inputStyle}
           />
           <textarea
             {...register("description", {
               required: true,
-              max: 200,
-              min: 50,
-              maxLength: 200,
             })}
             placeholder="description"
             className={inputStyle}
@@ -87,9 +81,6 @@ export default function AddProductForm() {
             {...register("price", {
               valueAsNumber: true,
               required: true,
-              max: 25000000,
-              min: 30000,
-              maxLength: 25000000,
             })}
             className={inputStyle}
           />
@@ -98,9 +89,6 @@ export default function AddProductForm() {
             placeholder="cpu"
             {...register("cpu", {
               required: true,
-              max: 25,
-              min: 16,
-              maxLength: 24,
             })}
             className={inputStyle}
           />
@@ -109,9 +97,6 @@ export default function AddProductForm() {
             placeholder="ram"
             {...register("ram", {
               required: true,
-              max: 15,
-              min: 16,
-              maxLength: 15,
             })}
             className={inputStyle}
           />
@@ -120,9 +105,6 @@ export default function AddProductForm() {
             placeholder="storage"
             {...register("storage", {
               required: true,
-              max: 25,
-              min: 16,
-              maxLength: 25,
             })}
             className={inputStyle}
           />
@@ -131,9 +113,6 @@ export default function AddProductForm() {
             placeholder="display"
             {...register("display", {
               required: true,
-              max: 25,
-              min: 16,
-              maxLength: 25,
             })}
             className={inputStyle}
           />
@@ -142,9 +121,6 @@ export default function AddProductForm() {
             placeholder="gpu"
             {...register("gpu", {
               required: true,
-              max: 25,
-              min: 16,
-              maxLength: 24,
             })}
             className={inputStyle}
           />
@@ -191,9 +167,6 @@ export default function AddProductForm() {
             placeholder="stock"
             {...register("stock", {
               required: true,
-              max: 100,
-              min: 1,
-              maxLength: 100,
             })}
             className={inputStyle}
           />

@@ -13,22 +13,22 @@ export const productsRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const { cursor, limit } = input;
+      const { cursor, limit, search, category, filter } = input;
       const products = await ctx.prisma.computer.findMany({
         take: limit + 1,
         where: {
           title: {
-            contains: input.search,
+            contains: search,
             mode: "insensitive",
           },
           category: {
-            contains: input.category,
+            contains: category,
           },
         },
         orderBy: [
           {
             createdAt:
-              input.filter === "date-newest"
+              filter === "date-newest"
                 ? "desc"
                 : input.filter === "date-oldest"
                 ? "asc"
@@ -36,7 +36,7 @@ export const productsRouter = createTRPCRouter({
           },
           {
             price:
-              input.filter === "price-low-to-high"
+              filter === "price-low-to-high"
                 ? "asc"
                 : input.filter === "price-high-to-low"
                 ? "desc"

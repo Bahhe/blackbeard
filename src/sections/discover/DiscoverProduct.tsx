@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsLaptop } from "react-icons/bs";
-import type { Product } from "types";
+import type { Accessory, Product } from "types";
 
 type ProductProps = {
-  product: Product;
+  product: Product | Accessory;
 };
 
 export default function DiscoverProduct({
@@ -13,17 +13,17 @@ export default function DiscoverProduct({
   return (
     <Link
       href={`/shop/product/${id}`}
-      className="relative flex cursor-pointer items-center justify-center rounded-2xl border shadow-xl duration-200 hover:scale-105"
+      className="relative flex h-64 w-96 cursor-pointer items-center justify-center rounded-2xl border shadow-xl duration-200 hover:scale-105"
     >
       <Image
         src={image}
-        width={298}
-        height={195}
+        width={500}
+        height={500}
         alt="product"
-        className="h-auto w-auto p-5"
+        className="h-5/6 w-auto"
       />
-      <BsLaptop className="absolute top-5 left-5 text-2xl" />
-      <span className="absolute top-5 right-5 rounded bg-red-500 py-1 px-4 font-bold text-white">
+      <BsLaptop className="absolute top-3 left-3 text-2xl" />
+      <span className="absolute top-3 right-3 rounded bg-red-500 py-1 px-2 text-sm font-bold text-white">
         20%
       </span>
     </Link>

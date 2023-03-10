@@ -12,14 +12,8 @@ const LaptopsProducts = ({ products }: { products?: Product[] }) => {
   return (
     <section>
       <div className="mx-auto flex items-center rounded-2xl border shadow-xl">
-        <div className="mt-10 ml-10 mb-10 self-start overflow-hidden rounded-3xl border shadow-xl">
-          <Image
-            src={cover}
-            width={317}
-            height={424}
-            alt="cover"
-            className="h-auto w-auto object-cover"
-          />
+        <div className="mt-10 ml-10 mb-10 self-start overflow-hidden rounded-3xl border shadow-lg">
+          <Image src={cover} width={380} alt="cover" className="object-cover" />
         </div>
         <div className="relative mx-auto flex w-4/6 items-center gap-4 p-10">
           <MdArrowBackIos className="image-laptops-swiper-button-prev absolute top-1/2 -left-5 -translate-y-1/2 cursor-pointer text-4xl" />

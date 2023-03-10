@@ -19,17 +19,21 @@ const items = [
 
 export default function Marketing() {
   return (
-    <section className="my-20">
-      <div className="w-3/6 mx-auto flex items-center justify-center gap-16">
+    <section className="mt-40 mb-52">
+      <div className="mx-auto flex w-3/6 items-center justify-center gap-16">
         {items.map((item, index) => (
           <div
             key={index}
-            className="border p-14 aspect-square flex flex-col items-center justify-center gap-14"
+            className="group relative flex aspect-square cursor-pointer flex-col items-center justify-center gap-14 p-14"
           >
             <div className="text-6xl">{item.icon}</div>
             <div>
-              <p className="text-2xl capitalize font-extrabold">{item.text}</p>
+              <p className="text-2xl font-extrabold capitalize">{item.text}</p>
             </div>
+            <span className="absolute top-0 right-0 h-[30%] w-[30%] border-t border-r border-black duration-300 group-hover:-top-3 group-hover:-right-3"></span>
+            <span className="absolute top-0 left-0 h-[30%] w-[30%] border-t border-l border-black duration-300 group-hover:-top-3 group-hover:-left-3"></span>
+            <span className="absolute bottom-0 right-0 h-[30%] w-[30%] border-b border-r border-black duration-300 group-hover:-bottom-3 group-hover:-right-3"></span>
+            <span className="absolute bottom-0 left-0 h-[30%] w-[30%] border-b border-l border-black duration-300 group-hover:-bottom-3 group-hover:-left-3"></span>
           </div>
         ))}
       </div>

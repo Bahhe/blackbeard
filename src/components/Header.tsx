@@ -8,7 +8,7 @@ import { api } from "~/utils/api";
 import { useState } from "react";
 
 const linkStyle =
-  "border-b-2 border-white hover:border-black ease-in-out duration-1000 outline-none relative";
+  "border-b border-white hover:border-black ease-in-out duration-1000 outline-none relative";
 
 export default function Header() {
   const [search, setSearch] = useState("");
@@ -29,7 +29,7 @@ export default function Header() {
         </Link>
         <div className="group">
           shop now
-          <div className="absolute hidden p-2 shadow-lg group-hover:block">
+          <div className="absolute hidden rounded-lg p-5 shadow-lg group-hover:block">
             <Link href="/shop/products" className={`block py-1 ${linkStyle}`}>
               laptops
             </Link>
@@ -54,7 +54,7 @@ export default function Header() {
         </Link>
       </section>
       <form className="relative flex flex-1 items-center justify-center">
-        <div className="flex items-center rounded-lg border px-2 shadow-lg duration-500 hover:scale-105">
+        <div className="flex items-center rounded-lg border px-2 duration-300 ease-out hover:scale-105 hover:shadow-lg">
           <input
             type="text"
             placeholder="Search Products..."

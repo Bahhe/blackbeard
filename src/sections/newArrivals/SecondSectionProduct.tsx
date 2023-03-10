@@ -24,7 +24,7 @@ export default function SecondSectionProduct({ product }: ProductProps) {
             width={598}
             height={285}
             alt="laptop"
-            className="h-auto w-auto cursor-pointer"
+            className="h-5/6 w-auto cursor-pointer"
           />
         </Link>
         <div className="relative flex h-1/2 flex-col justify-between rounded-2xl border bg-white">

@@ -8,9 +8,10 @@ export default function ProductsPageContent() {
       <div className="flex flex-col justify-center gap-5 rounded-lg p-10 shadow-lg">
         {!products
           ? "loading products..."
-          : products.map((product) => (
-              <Product key={product.id} product={product} />
-            ))}
+          : products
+              .map((product) => <Product key={product.id} product={product} />)
+              .reverse()}
+        ,
       </div>
     </div>
   );

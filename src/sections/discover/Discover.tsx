@@ -1,16 +1,24 @@
 import SectionTitle from "~/components/SectionTitle";
 import DiscoverProduct from "./DiscoverProduct";
-import type { Product } from "types";
+import type { Accessory, Product } from "types";
 
-const Discover = ({ products }: { products?: Product[] }) => {
+const Discover = ({
+  products,
+  accessories,
+}: {
+  products?: Product[];
+  accessories?: Accessory[];
+}) => {
+  const items = [...(products as Product[]), ...(accessories as Accessory[])];
+  console.log(items);
   return (
-    <section className="marquee h-[500px]">
+    <section className="marquee">
       <SectionTitle name="discover" />
       <div className="track">
-        <div className="content flex min-w-max gap-10">
-          {!products
+        <div className="content flex gap-10">
+          {!items
             ? "loading products..."
-            : products.map((product) => (
+            : items.map((product) => (
                 <DiscoverProduct key={product.id} product={product} />
               ))}
         </div>

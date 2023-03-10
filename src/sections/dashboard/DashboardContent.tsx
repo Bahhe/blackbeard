@@ -26,7 +26,7 @@ export default function DashboardContent() {
               <p className={quantityStyle}>{totalProducts || "0"}</p>
             </div>
           </Link>
-          <Link className={boxStyle} href="/dashboard/products">
+          <Link className={boxStyle} href="/dashboard/accessories">
             <BsHeadphones className={iconStyle} />
             <div>
               <h1 className={titleStyle}>accessories</h1>
