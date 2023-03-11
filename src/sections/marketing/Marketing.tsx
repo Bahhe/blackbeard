@@ -24,11 +24,11 @@ export default function Marketing() {
         {items.map((item, index) => (
           <div
             key={index}
-            className="group relative flex aspect-square cursor-pointer flex-col items-center justify-center gap-14 p-14"
+            className="group relative flex aspect-square cursor-pointer flex-col items-center justify-center gap-14 p-10"
           >
             <div className="text-6xl">{item.icon}</div>
             <div>
-              <p className="text-2xl font-extrabold capitalize">{item.text}</p>
+              <p className="text-center capitalize">{item.text}</p>
             </div>
             <span className="absolute top-0 right-0 h-[30%] w-[30%] border-t border-r border-black duration-300 group-hover:-top-3 group-hover:-right-3"></span>
             <span className="absolute top-0 left-0 h-[30%] w-[30%] border-t border-l border-black duration-300 group-hover:-top-3 group-hover:-left-3"></span>

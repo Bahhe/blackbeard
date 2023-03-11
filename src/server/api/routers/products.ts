@@ -25,24 +25,15 @@ export const productsRouter = createTRPCRouter({
             contains: category,
           },
         },
-        orderBy: [
-          {
-            createdAt:
-              filter === "date-newest"
-                ? "desc"
-                : input.filter === "date-oldest"
-                ? "asc"
-                : "desc",
-          },
-          {
-            price:
-              filter === "price-low-to-high"
-                ? "asc"
-                : input.filter === "price-high-to-low"
-                ? "desc"
-                : "desc",
-          },
-        ],
+        orderBy: {
+          price:
+            filter === "price-low-to-high"
+              ? "asc"
+              : filter === "price-high-to-low"
+              ? "desc"
+              : "desc",
+        },
+
         cursor: cursor ? { id: cursor } : undefined,
       });
       let nextCursor: typeof cursor | undefined = undefined;
@@ -100,6 +91,9 @@ export const productsRouter = createTRPCRouter({
         brand: z.string({ required_error: "Invalid brand" }),
         section: z.string({ required_error: "Invalid section" }),
         stock: z.string({ required_error: "Invalid stock" }),
+        discount: z
+          .string({ required_error: "Invalid discount value" })
+          .optional(),
       })
     )
     .mutation(({ ctx, input }) => {
@@ -118,6 +112,7 @@ export const productsRouter = createTRPCRouter({
           brand: input.brand,
           section: input.section,
           stock: input.stock,
+          discount: input.discount,
         },
       });
     }),
@@ -138,6 +133,9 @@ export const productsRouter = createTRPCRouter({
         brand: z.string({ required_error: "Invalid brand" }),
         section: z.string({ required_error: "Invalid section" }),
         stock: z.string({ required_error: "Invalid stock" }),
+        discount: z
+          .string({ required_error: "Invalid discount value" })
+          .optional(),
       })
     )
     .mutation(
@@ -158,6 +156,7 @@ export const productsRouter = createTRPCRouter({
           brand,
           section,
           stock,
+          discount,
         },
       }) => {
         return ctx.prisma.computer.update({
@@ -178,6 +177,7 @@ export const productsRouter = createTRPCRouter({
             brand,
             section,
             stock,
+            discount,
           },
         });
       }

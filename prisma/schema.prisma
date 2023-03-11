@@ -78,6 +78,8 @@ model Computer {
     storage     String
     display     String
     gpu         String
+    type        String?  @default("computers")
+    discount    String?
 }
 
 model Accessory {
@@ -92,6 +94,8 @@ model Accessory {
     description String
     price       Int
     stock       String
+    type        String?  @default("accessories")
+    discount    String?
 }
 
 model Cart {

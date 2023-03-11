@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { products } from "./products";
+import { accessories, products } from "./products";
 const prisma = new PrismaClient();
 
 async function main() {
@@ -23,6 +23,22 @@ async function main() {
     });
   }
   console.log(`Created ${products.length} products`);
+
+  for (const accessory of accessories) {
+    await prisma.accessory.create({
+      data: {
+        title: accessory.title,
+        image: accessory.image,
+        description: accessory.description,
+        section: accessory.section,
+        brand: accessory.brand,
+        category: accessory.category,
+        price: accessory.price,
+        stock: accessory.stock,
+      },
+    });
+  }
+  console.log(`Created ${accessories.length} accessories`);
 }
 main()
   .then(async () => {

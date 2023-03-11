@@ -14,6 +14,7 @@ export const products = [
     storage: "256gb ssd",
     display: '14" inches',
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "acer aspire 3 ",
@@ -30,6 +31,7 @@ export const products = [
     storage: "1tb HDD",
     display: '17" ',
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "hp elitebook 840 g3 ",
@@ -46,6 +48,7 @@ export const products = [
     storage: "128 SSD",
     display: '14" FHD',
     gpu: "intel HD graphics 520",
+    type: "computers",
   },
   {
     title: "Lenovo Thinkpad T450S ",
@@ -62,6 +65,7 @@ export const products = [
     storage: "500GB HDD",
     display: '14" (35.56 cm) display, 1366 x 768 px',
     gpu: "Intel HD 5500",
+    type: "computers",
   },
   {
     title: "hp pavilion x360 ",
@@ -78,6 +82,7 @@ export const products = [
     storage: "256gb ssd",
     display: '14" Full HD IPS Display',
     gpu: "intel iris xe",
+    type: "computers",
   },
   {
     title: "lenovo thinkpad t570 ",
@@ -94,6 +99,7 @@ export const products = [
     storage: "256gb ssd",
     display: '15.6" full hd',
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "hp elitebook 840 g8 ",
@@ -110,6 +116,7 @@ export const products = [
     storage: "256gb ssd",
     display: ' 14" Full HD - 1920 x 1080',
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "apple macbook air 2015 ",
@@ -126,6 +133,7 @@ export const products = [
     storage: "256gb ssd",
     display: "13.3-inches",
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "apple macbook pro 2017",
@@ -142,6 +150,7 @@ export const products = [
     storage: "512gb ssd",
     display: '13" inches retina',
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "hp zbook 15 g3 ",
@@ -158,6 +167,7 @@ export const products = [
     storage: "256gb ssd",
     display: "15.6 Inches",
     gpu: "nvidia quadro m1000m 94",
+    type: "computers",
   },
   {
     title: "dell g3 15 ",
@@ -174,6 +184,7 @@ export const products = [
     storage: "256gb ssd",
     display: '15.6" Full HD',
     gpu: "nvidia geforce gtx 1650 4gb",
+    type: "computers",
   },
   {
     title: "asus tuf fx504g ",
@@ -190,6 +201,7 @@ export const products = [
     storage: "1tb hdd",
     display: "15.6” Full HD IPS-Level",
     gpu: "nvidia geforce gtx 1050",
+    type: "computers",
   },
   {
     title: "dell precision 7540 ",
@@ -206,6 +218,7 @@ export const products = [
     storage: "512gb ssd",
     display: "15.6″ Full HD",
     gpu: "nvidia quadro rtx 3000",
+    type: "computers",
   },
   {
     title: "microsoft surface laptop go ",
@@ -222,6 +235,7 @@ export const products = [
     storage: "128gb ssd",
     display: '12.4" FULL HD Touchscreen',
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "toshiba satellite c55d-A-13Q ",
@@ -238,6 +252,7 @@ export const products = [
     storage: "500gb ssd",
     display: "15.6”",
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "apple macbook air 2019 ",
@@ -254,6 +269,7 @@ export const products = [
     storage: "128gb ssd",
     display: '13,3" retina display',
     gpu: "integrated",
+    type: "computers",
   },
   {
     title: "asus zenbook 14 ",
@@ -270,6 +286,7 @@ export const products = [
     storage: "512gb ssd",
     display: '14" IPS FHD',
     gpu: "nvidia geforce mx350",
+    type: "computers",
   },
   {
     title: "msi gp62 mvr ",
@@ -286,6 +303,7 @@ export const products = [
     storage: "265gb ssd",
     display: "15.6-inch",
     gpu: "intel gtx 1060 3gb",
+    type: "computers",
   },
   {
     title: "Dell Latitude E7270 ",
@@ -302,6 +320,7 @@ export const products = [
     storage: "256 GB SSD",
     display: '12.5" inches',
     gpu: "intel hd graphics 620",
+    type: "computers",
   },
   {
     title: "hp 15 laptop ",
@@ -318,5 +337,61 @@ export const products = [
     storage: "256gb ssd",
     display: "15.6” Full HD IPS",
     gpu: "integrated ",
+    type: "computers",
+  },
+];
+
+export const accessories = [
+  {
+    title: "Apple AirPods ",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/blackbeard-b03b7.appspot.com/o/2023-03-10T07%3A40%3A48.184Z?alt=media&token=7389e383-b475-40af-87bf-45f736013721",
+    description:
+      "Apple AirPods (2nd Generation) Wireless Earbuds with Lightning Charging Case Included. Over 24 Hours of Battery Life, Effortless Setup. Bluetooth Headphones for iPhone",
+    section: "landing page",
+    brand: "apple",
+    category: "wireless earphones",
+    price: 30000,
+    stock: "1",
+    type: "accessories",
+  },
+  {
+    title: "Apple AirPods Max ",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/blackbeard-b03b7.appspot.com/o/2023-03-10T07%3A49%3A54.506Z?alt=media&token=c2050957-1a14-4cb7-a8e5-4715adcedee4",
+    description:
+      "Apple AirPods Max Wireless Over-Ear Headphones. Active Noise Cancelling, Transparency Mode, Spatial Audio, Digital Crown for Volume Control. Bluetooth Headphones for iPhone - Space Gray",
+    section: "landing page",
+    brand: "apple",
+    category: "wireless headphones",
+    price: 40000,
+    stock: "1",
+    type: "accessories",
+  },
+  {
+    title: "Logitech G Pro",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/blackbeard-b03b7.appspot.com/o/2023-03-10T07%3A55%3A59.386Z?alt=media&token=b6a1fbc2-3dee-49bc-be3f-daa696442f62",
+    description:
+      "Logitech G Pro Wireless Gaming Mouse with Esports Grade Performance",
+    section: "landing page",
+    brand: "logitech",
+    category: "gaming mouse",
+    price: 1,
+    stock: "1",
+    type: "accessories",
+  },
+  {
+    title: "Glorious Model O",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/blackbeard-b03b7.appspot.com/o/2023-03-10T08%3A01%3A49.447Z?alt=media&token=f4dbef40-bf51-4ff9-8077-f70340ba7f30",
+    description:
+      "Glorious Gaming - Model O Wireless Gaming Mouse - RGB Mouse with Lights 69 g Superlight Mouse Honeycomb Mouse (Matte White Mouse)",
+    section: "landing page",
+    brand: "glorious",
+    category: "gaming mouse",
+    price: 15000,
+    stock: "1",
+    type: "accessories",
   },
 ];

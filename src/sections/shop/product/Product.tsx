@@ -37,13 +37,13 @@ export default function Product({
     <section className="mx-auto my-32 w-5/6">
       <div className="mx-auto flex w-5/6 items-center justify-center">
         <div className="flex-1">
-          <div className="flex items-center justify-center">
+          <div className="flex h-[500px] w-[600px]  items-center justify-center">
             <Image
               src={image}
               width={500}
               height={200}
               alt="product"
-              className="h-auto w-auto"
+              className="h-5/6 w-auto"
             />
           </div>
         </div>

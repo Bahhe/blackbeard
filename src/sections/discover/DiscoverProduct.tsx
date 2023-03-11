@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BsLaptop } from "react-icons/bs";
+import { BsHeadphones, BsLaptop } from "react-icons/bs";
 import type { Accessory, Product } from "types";
 
 type ProductProps = {
@@ -8,7 +8,7 @@ type ProductProps = {
 };
 
 export default function DiscoverProduct({
-  product: { image, id },
+  product: { image, id, type, discount },
 }: ProductProps) {
   return (
     <Link
@@ -22,10 +22,16 @@ export default function DiscoverProduct({
         alt="product"
         className="h-5/6 w-auto"
       />
-      <BsLaptop className="absolute top-3 left-3 text-2xl" />
-      <span className="absolute top-3 right-3 rounded bg-red-500 py-1 px-2 text-sm font-bold text-white">
-        20%
-      </span>
+      {type === "computers" ? (
+        <BsLaptop className="absolute top-3 left-3 text-2xl" />
+      ) : (
+        <BsHeadphones className="absolute top-3 left-3 text-2xl" />
+      )}
+      {discount && (
+        <span className="absolute top-3 right-3 rounded bg-red-500 py-1 px-2 text-sm font-bold text-white">
+          -{discount}%
+        </span>
+      )}
     </Link>
   );
 }

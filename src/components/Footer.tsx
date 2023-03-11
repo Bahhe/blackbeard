@@ -1,22 +1,59 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 
 const sections = [
   {
     title: "information",
-    links: ["about us", "terms of use", "site map"],
+    links: [
+      {
+        name: "about us",
+        href: "/about",
+      },
+      {
+        name: "terms of use",
+        href: "/termsofuse",
+      },
+    ],
   },
   {
     title: "footer links",
-    links: ["home page", "shop section", "my account", "contact us"],
+    links: [
+      {
+        name: "home page",
+        href: "/",
+      },
+    ],
   },
   {
     title: "our services",
-    links: ["laptops", "accessories", "maintenance"],
+    links: [
+      {
+        name: "laptops",
+        href: "/shop/products",
+      },
+      {
+        name: "accessories",
+        href: "/shop/accessories",
+      },
+    ],
   },
   {
     title: "contact info",
-    links: ["555-555-555", "example@example.com", "123 main street algeria"],
+    links: [
+      {
+        name: "+213-666-103-710",
+        href: "#",
+      },
+      {
+        name: "marchelldteach@gmail.com",
+        href: "#",
+      },
+      {
+        name: "Batna, Algeria",
+        href: "#",
+      },
+    ],
   },
 ];
 
@@ -33,10 +70,12 @@ export default function Footer() {
       <div className="mx-auto flex w-5/6 justify-center gap-16 py-20">
         {sections.map((section, index) => (
           <section key={index}>
-            <h6 className="text-xl font-bold">{section.title}</h6>
-            <ul className="pl-2 font-thin">
+            <h6 className="text-xl font-bold capitalize">{section.title}</h6>
+            <ul className="flex flex-col pl-2 font-thin">
               {section.links.map((link, index) => (
-                <li key={index}>{link}</li>
+                <Link key={index} href={link.href}>
+                  {link.name}
+                </Link>
               ))}
             </ul>
           </section>

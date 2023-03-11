@@ -21,24 +21,14 @@ export const accessoriesRouter = createTRPCRouter({
             mode: "insensitive",
           },
         },
-        orderBy: [
-          {
-            createdAt:
-              input.filter === "date-newest"
-                ? "desc"
-                : input.filter === "date-oldest"
-                ? "asc"
-                : "desc",
-          },
-          {
-            price:
-              input.filter === "price-low-to-high"
-                ? "asc"
-                : input.filter === "price-high-to-low"
-                ? "desc"
-                : "desc",
-          },
-        ],
+        orderBy: {
+          price:
+            input.filter === "price-low-to-high"
+              ? "asc"
+              : input.filter === "price-high-to-low"
+              ? "desc"
+              : "desc",
+        },
         cursor: cursor ? { id: cursor } : undefined,
       });
       let nextCursor: typeof cursor | undefined = undefined;
@@ -78,6 +68,7 @@ export const accessoriesRouter = createTRPCRouter({
         brand: z.string({ required_error: "Invalid brand" }),
         section: z.string({ required_error: "Invalid section" }),
         stock: z.string({ required_error: "Invalid stock" }),
+        discount: z.string({ required_error: "Invalid discount" }).optional(),
       })
     )
     .mutation(({ ctx, input }) => {
@@ -91,6 +82,7 @@ export const accessoriesRouter = createTRPCRouter({
           brand: input.brand,
           section: input.section,
           stock: input.stock,
+          discount: input.discount,
         },
       });
     }),
@@ -106,6 +98,7 @@ export const accessoriesRouter = createTRPCRouter({
         brand: z.string({ required_error: "Invalid brand" }),
         section: z.string({ required_error: "Invalid section" }),
         stock: z.string({ required_error: "Invalid stock" }),
+        discount: z.string({ required_error: "Invalid discount" }).optional(),
       })
     )
     .mutation(
@@ -121,6 +114,7 @@ export const accessoriesRouter = createTRPCRouter({
           brand,
           section,
           stock,
+          discount,
         },
       }) => {
         return ctx.prisma.accessory.update({
@@ -136,6 +130,7 @@ export const accessoriesRouter = createTRPCRouter({
             brand,
             section,
             stock,
+            discount,
           },
         });
       }

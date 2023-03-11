@@ -10,14 +10,14 @@ type ProductProps = {
 };
 
 export default function SecondSectionProduct({ product }: ProductProps) {
-  const { id, title, description, image, price } = product;
+  const { id, title, description, image, price, discount } = product;
   const dispatch = useDispatch();
   return (
     <section className="flex-1">
       <div className="mx-auto my-5 h-[500px] w-[400px] rounded-2xl border bg-gray-200 shadow-lg">
         <Link
           href={`/shop/product/${id}`}
-          className="flex h-1/2 items-center justify-center"
+          className="relative flex h-1/2 items-center justify-center"
         >
           <Image
             src={image}
@@ -26,11 +26,18 @@ export default function SecondSectionProduct({ product }: ProductProps) {
             alt="laptop"
             className="h-5/6 w-auto cursor-pointer"
           />
+          {discount && (
+            <span className="absolute top-3 right-3 rounded bg-red-500 py-1 px-2 text-sm font-bold text-white">
+              -{discount}%
+            </span>
+          )}
         </Link>
         <div className="relative flex h-1/2 flex-col justify-between rounded-2xl border bg-white">
           <div className="flex items-center p-5">
             <BsLaptop className="absolute top-5 left-5 flex text-3xl" />
-            <h3 className="ml-16 text-lg font-bold capitalize">{title}</h3>
+            <h3 className="ml-16 w-40 truncate text-lg font-bold capitalize">
+              {title}
+            </h3>
             <p className="absolute top-5 right-5 text-end text-lg">
               {price} da
             </p>

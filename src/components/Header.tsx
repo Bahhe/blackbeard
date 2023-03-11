@@ -8,7 +8,7 @@ import { api } from "~/utils/api";
 import { useState } from "react";
 
 const linkStyle =
-  "border-b border-white hover:border-black ease-in-out duration-1000 outline-none relative";
+  "border-b border-white hover:border-black ease-in-out duration-1000 outline-none relative text-sm";
 
 export default function Header() {
   const [search, setSearch] = useState("");
@@ -27,7 +27,7 @@ export default function Header() {
         <Link href="/" className={linkStyle}>
           home
         </Link>
-        <div className="group">
+        <div className="group text-sm">
           shop now
           <div className="absolute hidden rounded-lg p-5 shadow-lg group-hover:block">
             <Link href="/shop/products" className={`block py-1 ${linkStyle}`}>

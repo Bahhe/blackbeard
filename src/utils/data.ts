@@ -8,9 +8,4 @@ export const categories: string[] = [
   "accessories",
   "other",
 ];
-export const filters: string[] = [
-  "date-newest",
-  "date-oldest",
-  "price-high-to-low",
-  "price-low-to-high",
-];
+export const filters: string[] = ["price-high-to-low", "price-low-to-high"];

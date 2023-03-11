@@ -209,6 +209,12 @@ export default function Product({
               })}
               className={inputStyle}
             />
+            <input
+              type="number"
+              placeholder="discount"
+              {...register("discount")}
+              className={inputStyle}
+            />
             <select {...register("section")} className={inputStyle}>
               <option value="landing page">landing page</option>
               <option value="discover">discover</option>
