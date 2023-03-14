@@ -76,7 +76,12 @@ export default function Product({
   });
 
   const onSubmit: SubmitHandler<Accessory> = (data) => {
-    mutate({ ...data, image: url ? url : image, id: id });
+    mutate({
+      ...data,
+      discount: data.discount as string,
+      image: url ? url : image,
+      id: id,
+    });
   };
   console.log(errors);
 

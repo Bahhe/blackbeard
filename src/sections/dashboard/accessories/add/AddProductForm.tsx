@@ -48,8 +48,8 @@ export default function AddProductForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<Accessory>();
-  const onSubmit: SubmitHandler<Accessory> = async (data) => {
-    mutate({ ...data, image: url });
+  const onSubmit: SubmitHandler<Accessory> = (data) => {
+    mutate({ ...data, discount: data.discount as string, image: url });
     if (isError) {
       return alert(`something went wrong`);
     }

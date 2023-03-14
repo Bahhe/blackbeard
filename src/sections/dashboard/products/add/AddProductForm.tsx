@@ -49,7 +49,7 @@ export default function AddProductForm() {
     formState: { errors },
   } = useForm<Product>();
   const onSubmit: SubmitHandler<Product> = (data) => {
-    mutate({ ...data, image: url });
+    mutate({ ...data, discount: data.discount as string, image: url });
   };
   console.log(errors);
 
