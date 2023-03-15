@@ -12,6 +12,7 @@ import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import { createInnerTRPCContext } from "~/server/api/trpc";
 import { appRouter } from "~/server/api/root";
 import superjson from "superjson";
+import { motion } from "framer-motion";
 
 const Home: NextPage = () => {
   const { data: accessories } = api.accessories.getAll.useQuery();
@@ -25,12 +26,54 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <LandingSection products={products} />
-        <SecondSection products={products} />
-        <Categories />
-        <LaptopsSwiper products={products} />
-        <AccessoriesSwiper accessories={accessories} />
-        <Discover products={products} accessories={accessories} />
-        <Marketing />
+        <motion.div
+          initial={{ y: 500 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ ease: "easeOut", delay: 0.1 }}
+        >
+          <SecondSection products={products} />
+        </motion.div>
+        <motion.div
+          initial={{ y: 500 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ ease: "easeOut", delay: 0.1 }}
+        >
+          <Categories />
+        </motion.div>
+        <motion.div
+          initial={{ y: 500 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ ease: "easeOut", delay: 0.1 }}
+        >
+          <LaptopsSwiper products={products} />
+        </motion.div>
+        <motion.div
+          initial={{ y: 500 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ ease: "easeOut", delay: 0.1 }}
+        >
+          <AccessoriesSwiper accessories={accessories} />
+        </motion.div>
+        <motion.div
+          initial={{ y: 500 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ ease: "easeOut", delay: 0.1 }}
+        >
+          <Discover products={products} accessories={accessories} />
+        </motion.div>
+        <motion.div
+          initial={{ y: 500 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ ease: "easeOut", delay: 0.1 }}
+        >
+          <Marketing />
+        </motion.div>
       </main>
     </>
   );

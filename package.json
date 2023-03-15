@@ -21,6 +21,7 @@
     "@trpc/server": "^10.9.0",
     "chart.js": "^4.2.1",
     "firebase": "^9.17.1",
+    "framer-motion": "^10.3.2",
     "next": "13.1.6",
     "next-auth": "^4.19.0",
     "react": "18.2.0",
