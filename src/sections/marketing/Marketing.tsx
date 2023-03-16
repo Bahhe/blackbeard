@@ -20,7 +20,7 @@ const items = [
 export default function Marketing() {
   return (
     <section className="mt-40 mb-52">
-      <div className="mx-auto flex w-3/6 items-center justify-center gap-16">
+      <div className="mx-auto flex w-3/6 flex-col items-center justify-center gap-16 lg:flex-row">
         {items.map((item, index) => (
           <div
             key={index}

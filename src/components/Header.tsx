@@ -53,7 +53,7 @@ export default function Header() {
           />
         </Link>
       </section>
-      <form className="relative flex flex-1 items-center justify-center">
+      <form className="relative hidden flex-1 items-center justify-center lg:flex">
         <div className="flex items-center rounded-lg border px-2 duration-300 ease-out hover:scale-105 hover:shadow-lg">
           <input
             type="text"

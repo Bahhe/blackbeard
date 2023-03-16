@@ -11,10 +11,10 @@ export default function LaptopsSwiperProduct({
   product: { id, image, title, price },
 }: ProductProps) {
   return (
-    <div className="mx-5">
+    <div className="lg:mx-5">
       <Link
         href={`/shop/product/${id}`}
-        className="flex h-52 w-80 flex-col items-center justify-center rounded-3xl border"
+        className="flex h-52 flex-col items-center justify-center rounded-3xl border lg:w-80"
       >
         <Image
           src={image}

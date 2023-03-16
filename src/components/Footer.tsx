@@ -67,7 +67,7 @@ export default function Footer() {
   return (
     <footer>
       <h6 className="text-center text-4xl font-extrabold">BlackBeardt</h6>
-      <div className="mx-auto flex w-5/6 justify-center gap-16 py-20">
+      <div className="mx-auto flex w-5/6 flex-col justify-center gap-16 py-20 lg:flex-row">
         {sections.map((section, index) => (
           <section key={index}>
             <h6 className="text-xl font-bold capitalize">{section.title}</h6>

@@ -14,7 +14,7 @@ export default function SecondSectionProduct({ product }: ProductProps) {
   const dispatch = useDispatch();
   return (
     <section className="flex-1">
-      <div className="mx-auto my-5 h-[500px] w-[400px] rounded-2xl border bg-gray-200 shadow-lg">
+      <div className="mx-auto my-5 h-[500px] w-[350px] rounded-2xl border bg-gray-200 shadow-lg lg:w-[400px]">
         <Link
           href={`/shop/product/${id}`}
           className="relative flex h-1/2 items-center justify-center"
@@ -35,7 +35,7 @@ export default function SecondSectionProduct({ product }: ProductProps) {
         <div className="relative flex h-1/2 flex-col justify-between rounded-2xl border bg-white">
           <div className="flex items-center p-5">
             <BsLaptop className="absolute top-5 left-5 flex text-3xl" />
-            <h3 className="ml-16 w-40 truncate text-lg font-bold capitalize">
+            <h3 className="ml-16 w-32 truncate text-lg font-bold capitalize lg:w-40">
               {title}
             </h3>
             <p className="absolute top-5 right-5 text-end text-lg">

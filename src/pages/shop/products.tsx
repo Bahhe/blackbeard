@@ -37,7 +37,7 @@ export default function Shop() {
   return (
     <main className="mx-auto flex w-5/6 flex-col">
       <section>
-        <div className="flex items-center justify-center gap-10 py-20">
+        <div className="flex flex-col items-center justify-center gap-10 py-20 lg:flex-row">
           <div className="flex items-center rounded-lg border py-2 px-4 shadow-lg">
             <BiCategory className="text-2xl text-gray-700" />
             <select

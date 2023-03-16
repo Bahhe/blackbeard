@@ -24,7 +24,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           {() => (
-            <main className={merienda.className}>
+            <main className={`${merienda.className} overflow-hidden`}>
               <Header />
               <Cart />
               <Component {...pageProps} />

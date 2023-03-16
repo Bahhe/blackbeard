@@ -2,7 +2,7 @@ export default function Terms() {
   const headerStyle = "mb-5 font-bold";
   const paragraphStyle = "mb-5 ml-5";
   return (
-    <main className="mx-auto my-40 w-2/6">
+    <main className="mx-auto my-40 w-5/6 lg:w-2/6">
       <h1 className="mb-20 text-5xl font-extrabold capitalize">terms of use</h1>
       <p className="mb-10 font-semibold">
         Thank you for choosing to use our website. By accessing or using our

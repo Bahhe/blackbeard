@@ -10,13 +10,18 @@ const SecondSection = ({ products }: { products?: Product[] }) => {
   return (
     <section className="mt-20">
       <div className="">
-        <div className="mx-auto w-5/6">
+        <div className="mx-auto lg:w-5/6">
           <h2 className="pb-40 text-center text-5xl font-extrabold uppercase">
             new arivals
           </h2>
           <div className="flex">
             <Swiper
-              slidesPerView={3}
+              slidesPerView={1}
+              breakpoints={{
+                1024: {
+                  slidesPerView: 2,
+                },
+              }}
               navigation={{
                 nextEl: ".image-second-swiper-button-next",
                 prevEl: ".image-second-swiper-button-prev",

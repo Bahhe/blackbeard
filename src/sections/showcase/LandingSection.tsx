@@ -8,8 +8,8 @@ import type { Product } from "types";
 
 const LandingSection = ({ products }: { products?: Product[] }) => {
   return (
-    <section className="mt-32">
-      <div className="group relative mx-auto flex w-4/6 items-center py-28">
+    <section className="lg:mt-32">
+      <div className="group relative mx-auto flex items-center lg:w-4/6 lg:py-28">
         <Swiper
           navigation={{
             nextEl: ".image-swiper-button-next",

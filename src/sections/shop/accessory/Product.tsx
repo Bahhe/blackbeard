@@ -7,7 +7,6 @@ import { MdAttachMoney } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import type { Accessory } from "types";
 import { addToCart, orderNow } from "~/redux/cartSlice";
-import Discover from "~/sections/discover/Discover";
 
 type ProductProps = {
   product: Accessory;
@@ -25,9 +24,9 @@ export default function Product({
 
   return (
     <section className="mx-auto my-32 w-5/6">
-      <div className="mx-auto flex w-5/6 items-center justify-center">
+      <div className="mx-auto flex w-5/6 flex-col items-center justify-center lg:flex-row">
         <div className="flex-1">
-          <div className="flex h-[500px] w-[600px] items-center justify-center border">
+          <div className="flex h-[300px] w-[600px] items-center justify-center border lg:h-[500px]">
             <Image
               src={image}
               width={500}
@@ -43,14 +42,14 @@ export default function Product({
           <div className="my-5 text-xl uppercase text-red-500">
             <p>{price} da</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col items-center justify-between lg:flex-row">
             <input
               type="number"
               value={quantity}
               onChange={handleQuantity}
               className="border text-center"
             />
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 ">
               <button
                 onClick={() => {
                   dispatch(

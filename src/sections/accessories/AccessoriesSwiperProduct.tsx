@@ -11,10 +11,10 @@ export default function AccessoriesSwiperProduct({
   accessory: { image, title, price, id },
 }: ProductProps) {
   return (
-    <div className="mx-5">
+    <div className="mx-5 py-2 lg:py-0">
       <Link
         href={`/shop/accessory/${id}`}
-        className="flex h-52 w-80 flex-col items-center justify-center rounded-3xl border"
+        className="flex h-52 flex-col items-center justify-center rounded-3xl border lg:w-80"
       >
         <Image
           src={image}
