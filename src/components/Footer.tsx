@@ -61,6 +61,7 @@ export const adminRoutes = /\/dashboard*/;
 
 export default function Footer() {
   const { asPath } = useRouter();
+  const date = new Date().getFullYear();
   if (adminRoutes.test(asPath)) {
     return <></>;
   }
@@ -105,8 +106,8 @@ export default function Footer() {
         </section>
       </div>
       <footer className="py-10 text-center text-sm font-thin text-gray-700">
-        BlackBeardt © 2023 Store. All Rights Reserved. Designed by
-        BahaEddine.Com
+        BlackBeardt © <span>{date.toString()}</span> Store. All Rights Reserved.
+        Designed by BahaEddine.Com
       </footer>
     </footer>
   );
