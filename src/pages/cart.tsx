@@ -10,7 +10,7 @@ export default function Cart() {
       <h1 className="mt-10 text-center text-4xl font-bold capitalize">
         cart items
       </h1>
-      <div className="mx-auto my-40 flex w-5/6 justify-center gap-10">
+      <div className="mx-auto my-40 flex w-5/6 flex-col justify-center gap-10 lg:flex-row">
         <div className="flex flex-col gap-5 rounded-lg border p-10">
           {cart?.map((item) => (
             <Products key={item.id} item={item} />

@@ -17,7 +17,7 @@ export default function Products({
   const dispatch = useDispatch();
   return (
     <div>
-      <div className="flex items-center rounded-lg border p-5">
+      <div className="flex flex-col gap-5 rounded-lg p-5 lg:flex-row lg:items-center lg:gap-0 lg:border">
         <Image
           src={image}
           width={150}

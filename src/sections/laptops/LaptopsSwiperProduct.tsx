@@ -27,7 +27,7 @@ export default function LaptopsSwiperProduct({
       <div className="mt-3 flex flex-col items-center gap-4">
         <Link
           href={`/shop/product/${id}`}
-          className="w-52 truncate text-xl font-bold capitalize lg:w-fit"
+          className="w-52 truncate text-center text-xl font-bold capitalize lg:w-fit lg:text-start"
         >
           {title}
         </Link>
