@@ -49,7 +49,7 @@ export default function Header() {
             width={100}
             height={100}
             alt="logo"
-            className="h-auto w-auto py-2 duration-500 hover:scale-105"
+            className="h-auto w-16 py-2 duration-500 hover:scale-105 lg:w-auto"
           />
         </Link>
       </section>

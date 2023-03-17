@@ -11,7 +11,7 @@ const SecondSection = ({ products }: { products?: Product[] }) => {
     <section className="mt-20">
       <div className="">
         <div className="mx-auto lg:w-5/6">
-          <h2 className="pb-40 text-center text-5xl font-extrabold uppercase">
+          <h2 className="pb-40 text-center text-3xl font-extrabold uppercase lg:text-5xl">
             new arivals
           </h2>
           <div className="flex">
@@ -20,6 +20,9 @@ const SecondSection = ({ products }: { products?: Product[] }) => {
               breakpoints={{
                 1024: {
                   slidesPerView: 2,
+                },
+                1536: {
+                  slidesPerView: 3,
                 },
               }}
               navigation={{

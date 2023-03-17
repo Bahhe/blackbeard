@@ -14,7 +14,7 @@ export default function AccessoriesSwiperProduct({
     <div className="mx-5 py-2 lg:py-0">
       <Link
         href={`/shop/accessory/${id}`}
-        className="flex h-52 flex-col items-center justify-center rounded-3xl border lg:w-80"
+        className="flex h-52 flex-col items-center justify-center rounded-3xl lg:w-80 lg:border"
       >
         <Image
           src={image}
@@ -27,7 +27,7 @@ export default function AccessoriesSwiperProduct({
       <div className="mt-3 flex flex-col items-center gap-4">
         <Link
           href={`/shop/accessory/${id}`}
-          className="text-xl font-bold capitalize"
+          className="w-52 truncate text-center text-xl font-bold capitalize lg:w-fit lg:text-start"
         >
           {title}
         </Link>

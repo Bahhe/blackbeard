@@ -94,7 +94,7 @@ export default function Footer() {
               className="mx-2 rounded-lg border p-3 shadow-xl"
               placeholder="example@gmail.com"
             />
-            <button className="cursor-pointer rounded-lg bg-blue-700 p-3 text-white shadow-xl">
+            <button className="mx-2 mt-2 cursor-pointer rounded-lg bg-blue-700 p-3 text-white shadow-xl lg:mx-auto lg:mt-auto">
               subscribe
             </button>
           </div>

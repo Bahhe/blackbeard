@@ -43,7 +43,7 @@ export default function Product({
               width={500}
               height={200}
               alt="product"
-              className="h-5/6 w-auto"
+              className="h-auto w-5/6 lg:h-5/6 lg:w-auto"
             />
           </div>
         </div>
@@ -81,9 +81,9 @@ export default function Product({
               type="number"
               value={quantity}
               onChange={handleQuantity}
-              className="border text-center"
+              className="m-5 border text-center"
             />
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col items-center gap-4 lg:flex-row">
               <button
                 onClick={() => {
                   dispatch(

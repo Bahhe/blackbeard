@@ -14,7 +14,7 @@ const Categories = () => {
     <section className="mx-auto lg:w-4/6">
       <div>
         <SectionTitle name="choose a category" />
-        <div className="flex flex-col items-center justify-center gap-10 lg:flex-row">
+        <div className="flex w-5/6 flex-col items-center justify-center gap-10 lg:flex-row">
           <Link href="/shop/products" className={productStyle}>
             <h4 className={categoryNameStyle}>laptops</h4>
             <div className="w-1/2 lg:w-auto">

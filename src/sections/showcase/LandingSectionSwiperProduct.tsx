@@ -14,7 +14,7 @@ export default function LandingSectionSwiperProduct({
       <div className="flex flex-1">
         <Link
           href={`shop/product/${id}`}
-          className="text-center lg:w-5/6 lg:pl-16 lg:text-start"
+          className="mx-auto w-4/5 lg:w-5/6 lg:pl-16 lg:text-start"
         >
           <h1 className="mb-5 text-4xl font-extrabold capitalize">{title}</h1>
           <p className="capitalize">{description}</p>
@@ -30,7 +30,7 @@ export default function LandingSectionSwiperProduct({
             width={898}
             height={585}
             alt="laptop"
-            className="h-5/6 w-auto"
+            className="h-auto w-5/6 lg:h-5/6 lg:w-auto"
           />
         </Link>
       </div>

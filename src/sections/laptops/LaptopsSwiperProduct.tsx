@@ -14,20 +14,20 @@ export default function LaptopsSwiperProduct({
     <div className="lg:mx-5">
       <Link
         href={`/shop/product/${id}`}
-        className="flex h-52 flex-col items-center justify-center rounded-3xl border lg:w-80"
+        className="flex h-52 flex-col items-center justify-center rounded-3xl lg:w-80 lg:border"
       >
         <Image
           src={image}
           width={898}
           height={595}
           alt="laptop"
-          className="h-5/6 w-auto"
+          className="h-auto w-5/6 lg:h-5/6 lg:w-auto"
         />
       </Link>
       <div className="mt-3 flex flex-col items-center gap-4">
         <Link
           href={`/shop/product/${id}`}
-          className="text-xl font-bold capitalize"
+          className="w-52 truncate text-xl font-bold capitalize lg:w-fit"
         >
           {title}
         </Link>

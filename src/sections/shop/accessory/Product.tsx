@@ -26,7 +26,7 @@ export default function Product({
     <section className="mx-auto my-32 w-5/6">
       <div className="mx-auto flex w-5/6 flex-col items-center justify-center lg:flex-row">
         <div className="flex-1">
-          <div className="flex h-[300px] w-[600px] items-center justify-center border lg:h-[500px]">
+          <div className="flex h-[300px] w-[600px] items-center justify-center lg:h-[500px] lg:border">
             <Image
               src={image}
               width={500}
@@ -47,9 +47,9 @@ export default function Product({
               type="number"
               value={quantity}
               onChange={handleQuantity}
-              className="border text-center"
+              className="m-5 border text-center"
             />
-            <div className="flex items-center gap-4 ">
+            <div className="flex flex-col items-center gap-4 lg:flex-row ">
               <button
                 onClick={() => {
                   dispatch(
