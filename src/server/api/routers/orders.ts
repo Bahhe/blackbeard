@@ -28,7 +28,6 @@ export const ordersRouter = createTRPCRouter({
         address: z.string({ required_error: "Invalid address" }),
         city: z.string({ required_error: "Invalid city" }),
         number: z.string({ required_error: "Invalid phone number" }),
-        delivery: z.string({ required_error: "Invalid delivery" }),
         orders: z.array(
           z.object({
             id: z.string(),
@@ -48,7 +47,6 @@ export const ordersRouter = createTRPCRouter({
           address: input.address,
           city: input.city,
           number: input.number,
-          delivery: input.delivery,
           orders: {
             create: input.orders,
           },
@@ -64,7 +62,6 @@ export const ordersRouter = createTRPCRouter({
         address: z.string({ required_error: "Invalid address" }),
         city: z.string({ required_error: "Invalid city" }),
         number: z.string({ required_error: "Invalid phone number" }),
-        delivery: z.string({ required_error: "Invalid delivery" }),
         orders: z.array(
           z.object({
             id: z.string(),
@@ -77,10 +74,7 @@ export const ordersRouter = createTRPCRouter({
       })
     )
     .mutation(
-      ({
-        ctx,
-        input: { id, email, name, address, city, number, delivery, orders },
-      }) => {
+      ({ ctx, input: { id, email, name, address, city, number, orders } }) => {
         return ctx.prisma.order.update({
           where: {
             id,
@@ -91,7 +85,6 @@ export const ordersRouter = createTRPCRouter({
             address,
             city,
             number,
-            delivery,
             orders: {
               create: orders,
             },

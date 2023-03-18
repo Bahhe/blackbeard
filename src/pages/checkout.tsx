@@ -84,16 +84,6 @@ export default function Checkout() {
             {...register("number", { required: true })}
             className={inputStyle}
           />
-          <select
-            {...register("delivery", { required: true })}
-            className={inputStyle}
-          >
-            <option value="Yalidine">Yalidine</option>
-            <option value="Ems">Ems</option>
-            <option value="DHL">DHL</option>
-            <option value="FedEx">FedEx</option>
-          </select>
-
           <input
             type="submit"
             className="w-full rounded-lg bg-red-500 py-2 px-4 text-white"

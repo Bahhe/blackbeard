@@ -118,6 +118,5 @@ model Order {
     address   String
     city      String
     number    String
-    delivery  String
     orders    Cart[]
 }
